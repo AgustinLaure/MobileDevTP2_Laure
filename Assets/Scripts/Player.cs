@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using Unity.Properties;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -30,6 +28,10 @@ public class Player : MonoBehaviour
 
     private Coroutine dashCooldownCoroutine = null;
     private WaitForSeconds dashCooldownTimer;
+
+    private const string playerTag = "Player";
+
+    public static string GetPlayerTag { get { return playerTag; } }
 
     private void Awake()
     {
