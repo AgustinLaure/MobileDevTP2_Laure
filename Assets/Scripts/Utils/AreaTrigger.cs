@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AreaTrigger : MonoBehaviour
 {
-    public event Action<Collider> OnTriggerEntered;
-    public event Action<Collider> OnTriggerExited;
+    public event Action<Collider2D> OnTriggerEntered;
+    public event Action<Collider2D> OnTriggerExited;
 
     [Header("References")]
     [SerializeField] private string triggerEnterEventClassName;
@@ -50,7 +50,7 @@ public class AreaTrigger : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         OnTriggerEntered?.Invoke(other);
 
@@ -67,7 +67,7 @@ public class AreaTrigger : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         OnTriggerExited?.Invoke(other);
 

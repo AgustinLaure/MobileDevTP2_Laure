@@ -1,11 +1,21 @@
 using System;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    enum WallDetection
+    {
+        Top,
+        Down,
+        Left,
+        Right
+    }
+
     [Header("References")]
-    [SerializeField] private AreaCollider areaCollider;
+    [SerializeField] private AreaTrigger areaTrigger;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private GameObject[] wallDetections;
 
     [Header("Configs")]
     [SerializeField] private float speed;
@@ -20,6 +30,8 @@ public class Player : MonoBehaviour
 
     private ForceMode2D pushForceMode = ForceMode2D.Impulse;
 
+    private const float epsilon = 0.1f;
+
     private void Awake()
     {
         ServiceLocator serviceLocator = ServiceLocator.Instance;
@@ -28,8 +40,7 @@ public class Player : MonoBehaviour
         inputController = serviceLocator.GetService<InputSystemController>();
 
         eventBus.Subscribe<OnSwipe>((Action<OnSwipe>)HandleSwipe);
-        areaCollider.OnColliderEntered += HandleWallCollision;
-
+        areaTrigger.OnTriggerEntered += HandleWallCollision;
     }
 
     private void HandleSwipe(OnSwipe data)
@@ -43,12 +54,42 @@ public class Player : MonoBehaviour
     private void Launch(Vector2 direction)
     {
         rb.AddForce(direction * speed, pushForceMode);
+
+        DisableWallDetection();
+
+        int detectionIndex = 0;
+        if (direction.x > 0f)
+        {
+            detectionIndex = 3;
+        }
+        else if (direction.x < 0f)
+        {
+            detectionIndex = 2;
+        }
+        else if (direction.y > 0f)
+        {
+            detectionIndex = 0;
+        }
+        else if (direction.y < 0f)
+        {
+            detectionIndex = 1;
+        }
+        wallDetections[detectionIndex].SetActive(true);
+
         isTraveling = true;
     }
 
-    private void HandleWallCollision(Collision2D collision)
+    private void DisableWallDetection()
     {
-        if (collision.gameObject.CompareTag(wallTag))
+        foreach (GameObject wallDetection in wallDetections)
+        {
+            wallDetection.SetActive(false);
+        }
+    }
+
+    private void HandleWallCollision(Collider2D collider)
+    {
+        if (collider.CompareTag(wallTag))
         {
             isTraveling = false;
         }
@@ -57,6 +98,6 @@ public class Player : MonoBehaviour
     private void OnDestroy()
     {
         eventBus.Unsubscribe<OnSwipe>((Action<OnSwipe>)HandleSwipe);
-        areaCollider.OnColliderEntered -= HandleWallCollision;
+        areaTrigger.OnTriggerEntered -= HandleWallCollision;
     }
 }
