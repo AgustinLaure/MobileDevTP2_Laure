@@ -10,6 +10,9 @@ public static class BootStrapper
         serviceLocator.AddService(new CompositePool());
         serviceLocator.AddService(new EventBus());
         serviceLocator.AddService(new InputSystemController());
+
+        GameObject gameManagerPrefab = Resources.Load<GameObject>("GameManager");
+        serviceLocator.AddServiceFromPrefab<GameManager>(gameManagerPrefab, true);
     }
 
     public static T CreateMonoSingletonGameObject<T>() where T : MonoBehaviour

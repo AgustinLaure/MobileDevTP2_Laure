@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IRestartable
 {
     [Header("References")]
     [SerializeField] private AreaCollider areaTrigger;
@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private BoxCollider2D wallCheck;
     [SerializeField] private float wallCheckDistance;
+
+    private Vector3 startPos = Vector3.zero;
 
     private InputSystemController inputController;
     private EventBus eventBus;
@@ -44,6 +46,13 @@ public class Player : MonoBehaviour
         areaTrigger.OnColliderEntered += HandleWallCollision;
 
         dashCooldownTimer = new WaitForSeconds(dashCooldown);
+
+        startPos = transform.position;
+    }
+
+    public void Restart(Transform position)
+    {
+        transform.position = startPos;
     }
 
     private void HandleSwipe(OnSwipe data)
