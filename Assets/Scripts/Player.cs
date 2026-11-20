@@ -1,24 +1,22 @@
 using System;
+using System.Collections;
+using Unity.Properties;
 using UnityEditorInternal;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    enum WallDetection
-    {
-        Top,
-        Down,
-        Left,
-        Right
-    }
-
     [Header("References")]
-    [SerializeField] private AreaTrigger areaTrigger;
+    [SerializeField] private AreaCollider areaTrigger;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private GameObject[] wallDetections;
 
     [Header("Configs")]
     [SerializeField] private float speed;
+    [SerializeField] private float dashCooldown;
+    [SerializeField] private LayerMask wallLayer;
+
+    [SerializeField] private BoxCollider2D wallCheck;
+    [SerializeField] private float wallCheckDistance;
 
     private InputSystemController inputController;
     private EventBus eventBus;
@@ -30,7 +28,8 @@ public class Player : MonoBehaviour
 
     private ForceMode2D pushForceMode = ForceMode2D.Impulse;
 
-    private const float epsilon = 0.1f;
+    private Coroutine dashCooldownCoroutine = null;
+    private WaitForSeconds dashCooldownTimer;
 
     private void Awake()
     {
@@ -40,7 +39,9 @@ public class Player : MonoBehaviour
         inputController = serviceLocator.GetService<InputSystemController>();
 
         eventBus.Subscribe<OnSwipe>((Action<OnSwipe>)HandleSwipe);
-        areaTrigger.OnTriggerEntered += HandleWallCollision;
+        areaTrigger.OnColliderEntered += HandleWallCollision;
+
+        dashCooldownTimer = new WaitForSeconds(dashCooldown);
     }
 
     private void HandleSwipe(OnSwipe data)
@@ -51,53 +52,54 @@ public class Player : MonoBehaviour
         }
     }
 
+    private IEnumerator DashCooldownCoroutine()
+    {
+        yield return dashCooldownTimer;
+
+        isTraveling = false;
+    }
+
     private void Launch(Vector2 direction)
     {
-        rb.AddForce(direction * speed, pushForceMode);
+        RaycastHit2D hit = Physics2D.BoxCast(
+        (Vector2)wallCheck.bounds.center + direction * wallCheckDistance,
+        wallCheck.bounds.size,
+        0f,
+        direction.normalized,
+        wallCheckDistance,
+        wallLayer
+    );
 
-        DisableWallDetection();
-
-        int detectionIndex = 0;
-        if (direction.x > 0f)
+        if (hit.collider == null)
         {
-            detectionIndex = 3;
-        }
-        else if (direction.x < 0f)
-        {
-            detectionIndex = 2;
-        }
-        else if (direction.y > 0f)
-        {
-            detectionIndex = 0;
-        }
-        else if (direction.y < 0f)
-        {
-            detectionIndex = 1;
-        }
-        wallDetections[detectionIndex].SetActive(true);
-
-        isTraveling = true;
-    }
-
-    private void DisableWallDetection()
-    {
-        foreach (GameObject wallDetection in wallDetections)
-        {
-            wallDetection.SetActive(false);
+            rb.AddForce(direction * speed, pushForceMode);
+            isTraveling = true;
         }
     }
 
-    private void HandleWallCollision(Collider2D collider)
+    private void HandleWallCollision(Collision2D collision)
     {
-        if (collider.CompareTag(wallTag))
+        if (collision.gameObject.CompareTag(wallTag))
         {
-            isTraveling = false;
+            rb.linearVelocity = Vector2.zero;
+
+            if (dashCooldownCoroutine != null)
+            {
+                StopCoroutine(dashCooldownCoroutine);
+            }
+
+            dashCooldownCoroutine = StartCoroutine(DashCooldownCoroutine());
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube((Vector2)wallCheck.bounds.center + new Vector2(0f, 1f) * wallCheckDistance, wallCheck.bounds.size);
     }
 
     private void OnDestroy()
     {
         eventBus.Unsubscribe<OnSwipe>((Action<OnSwipe>)HandleSwipe);
-        areaTrigger.OnTriggerEntered -= HandleWallCollision;
+        areaTrigger.OnColliderEntered -= HandleWallCollision;
     }
 }
