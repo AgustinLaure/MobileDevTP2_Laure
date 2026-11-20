@@ -1,22 +1,15 @@
-
-using System;
-using UnityEditor;
 using UnityEngine;
 
 public static class BootStrapper
 {
-    private static ServiceLocator serviceLocator = ServiceLocator.Instance;
-
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void Init()
     {
+        ServiceLocator serviceLocator = ServiceLocator.Instance;
+
         serviceLocator.AddService(new CompositePool());
         serviceLocator.AddService(new EventBus());
-
-        serviceLocator.AddServiceAsGameObject<InputHandler>(null);
-        serviceLocator.AddServiceAsGameObject<GameManager>(null);
-
-        //CreateMonoSingletonGameObject<CheatManager>();
+        serviceLocator.AddService(new InputSystemController());
     }
 
     public static T CreateMonoSingletonGameObject<T>() where T : MonoBehaviour
@@ -42,7 +35,6 @@ public static class BootStrapper
 
     public static void OnReset()
     {
-        serviceLocator.GetService<CompositePool>().Clear();
-        serviceLocator.GetService<EventBus>().Clear();
+
     }
 }
