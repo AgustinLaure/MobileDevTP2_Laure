@@ -6,15 +6,27 @@ public class LevelManager : MonoBehaviour
 {
     private List<IRestartable> entities = new List<IRestartable>();
     private EventBus eventBus;
+    private GameManager gameManager;
 
     private void Awake()
     {
-        eventBus = ServiceLocator.Instance.GetService<EventBus>();
+        ServiceLocator serviceLocator = ServiceLocator.Instance;
+
+        eventBus = serviceLocator.GetService<EventBus>();
         eventBus.Subscribe<OnRetry>((Action)HandleRetry);
+
+        gameManager = serviceLocator.GetService<GameManager>();
     }
 
     private void Start()
     {
+        GameObject levelPrefab = null;
+
+        if (gameManager.GetCurrentLevelPrefab(out levelPrefab))
+        {
+            Instantiate(levelPrefab, null, true);
+        }
+
         MonoBehaviour[] monoBehaviours = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
         foreach (MonoBehaviour monoBehaviour in monoBehaviours)
