@@ -9,29 +9,41 @@ public class GameplayUI : MonoBehaviour
     private EventBus eventBus;
 
     [SerializeField] private CanvasGroup resultScreenCanvasGroup;
-    [SerializeField] private Button mainMenuButton;
-    [SerializeField] private Button retryButton;
-    [SerializeField] private Button continueButton;
+    [SerializeField] private Button resultMainMenuButton;
+    [SerializeField] private Button resultRetryButton;
+    [SerializeField] private Button resultContinueButton;
+
+    [SerializeField] private CanvasGroup pauseScreenCanvasGroup;
+    [SerializeField] private Button pauseButton;
+    [SerializeField] private Button pauseMainMenuButton;
+    [SerializeField] private Button pauseRetryButton;
+    [SerializeField] private Button pauseResumeButton;
 
     [SerializeField] private CanvasGroup continueButtonCG;
+    [SerializeField] private CanvasGroup pauseButtonCG;
 
     [SerializeField] private float disabledContinueAlpha;
 
     private void Awake()
     {
-        mainMenuButton.onClick.AddListener(HandleMainMenu);
-        retryButton.onClick.AddListener(HandleRetry);
-        continueButton.onClick.AddListener(HandleContinue);
+        resultMainMenuButton.onClick.AddListener(HandleResultMainMenu);
+        resultRetryButton.onClick.AddListener(HandleResultRetry);
+        resultContinueButton.onClick.AddListener(HandleResultContinue);
+
+        pauseButton.onClick.AddListener(HandlePause);
+        pauseMainMenuButton.onClick.AddListener(HandlePauseMainMenu);
+        pauseRetryButton.onClick.AddListener(HandlePauseRetry);
+        pauseResumeButton.onClick.AddListener(HandlePauseResume);
 
         ServiceLocator serviceLocator = ServiceLocator.Instance;
 
         gameManager = serviceLocator.GetService<GameManager>();
         eventBus = serviceLocator.GetService<EventBus>();
 
-        eventBus.Subscribe<OnGameEnded>((Action<OnGameEnded>)HandleGameEnd);
+        eventBus.Subscribe<OnGameEnded>((Action<OnGameEnded>)HandleGameWin);
     }
 
-    private void HandleGameEnd(OnGameEnded data)
+    private void HandleGameWin(OnGameEnded data)
     {
         UiUtils.SetCanvasActive(resultScreenCanvasGroup, true);
 
@@ -40,30 +52,66 @@ public class GameplayUI : MonoBehaviour
             UiUtils.SetCanvasActive(continueButtonCG, false);
             continueButtonCG.alpha = disabledContinueAlpha;
         }
+
+        gameManager.SetCurrentLevelWon();
+        gameManager.SetPause(true);
     }
 
-    private void HandleMainMenu()
+    private void HandleResultMainMenu()
     {
         gameManager.LoadScene(gameManager.GetMainMenuSceneName);
     }
 
-    private void HandleRetry()
+    private void HandleResultRetry()
     {
+        gameManager.SetPause(false);
         eventBus.Raise<OnRetry>();
         UiUtils.SetCanvasActive(resultScreenCanvasGroup, false);
     }
 
-    private void HandleContinue()
+    private void HandleResultContinue()
     {
         gameManager.LoadLevel(gameManager.GetCurrentLevelIndex + 1);
     }
 
+    private void HandlePauseMainMenu()
+    {
+        gameManager.SetPause(false);
+        gameManager.LoadScene(gameManager.GetMainMenuSceneName);
+    }
+
+    private void HandlePause()
+    {
+        gameManager.SetPause(true);
+        UiUtils.SetCanvasActive(pauseButtonCG, false);
+        UiUtils.SetCanvasActive(pauseScreenCanvasGroup, true);
+    }
+
+    private void HandlePauseRetry()
+    {
+        gameManager.SetPause(false);
+        eventBus.Raise<OnRetry>();
+        UiUtils.SetCanvasActive(pauseScreenCanvasGroup, false);
+    }
+
+    private void HandlePauseResume()
+    {
+        gameManager.SetPause(false);
+        UiUtils.SetCanvasActive(pauseButtonCG, true);
+        UiUtils.SetCanvasActive(pauseScreenCanvasGroup, false);
+    }
+
     private void OnDestroy()
     {
-        mainMenuButton.onClick.RemoveListener(HandleMainMenu);
-        retryButton.onClick.RemoveListener(HandleRetry);
-        continueButton.onClick.RemoveListener(HandleContinue);
+        resultMainMenuButton.onClick.RemoveListener(HandleResultMainMenu);
+        resultRetryButton.onClick.RemoveListener(HandleResultRetry);
+        resultContinueButton.onClick.RemoveListener(HandleResultContinue);
 
-        eventBus.Unsubscribe<OnGameEnded>((Action<OnGameEnded>)HandleGameEnd);
+        pauseButton.onClick.RemoveListener(HandlePause);
+        pauseMainMenuButton.onClick.RemoveListener(HandlePauseMainMenu);
+        pauseRetryButton.onClick.RemoveListener(HandlePauseRetry);
+        pauseResumeButton.onClick.RemoveListener(HandlePauseResume);
+
+        eventBus.Unsubscribe<OnGameEnded>((Action<OnGameEnded>)HandleGameWin);
     }
 }

@@ -36,6 +36,8 @@ public class LevelManager : MonoBehaviour
                 entities.Add(restartable);
             }
         }
+
+        gameManager.SetPause(false);
     }
 
     private void HandleRetry()

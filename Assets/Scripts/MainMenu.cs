@@ -17,7 +17,11 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button levelSelectLevel3Button;
     [SerializeField] private Button levelSelectBackButton;
 
+    [SerializeField] private CanvasGroup[] levelSelectCG;
+
     [SerializeField] private Button creditsBackButton;
+
+    [SerializeField] private float nonSelectableLevelAlpha;
 
     private GameManager gameManager;
 
@@ -38,6 +42,24 @@ public class MainMenu : MonoBehaviour
         ServiceLocator serviceLocator = ServiceLocator.Instance;
 
         gameManager = serviceLocator.GetService<GameManager>();
+
+        gameManager.SetPause(false);
+
+        int maxLevelReached = gameManager.GetMaxLevelReached;
+
+        for (int i = 0; i < levelSelectCG.Length; i++)
+        {
+            UiUtils.SetCanvasActive(levelSelectCG[i], false);
+            levelSelectCG[i].alpha = nonSelectableLevelAlpha;
+        }
+
+        for (int i = 0; i <= maxLevelReached + 1; i++)
+        {
+            if (i < levelSelectCG.Length)
+            {
+                UiUtils.SetCanvasActive(levelSelectCG[i], true);
+            }
+        }
     }
 
     private void HandleMainMenuPlay()

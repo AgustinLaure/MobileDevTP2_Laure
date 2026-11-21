@@ -7,6 +7,7 @@ public class Player : MonoBehaviour, IRestartable
     [Header("References")]
     [SerializeField] private AreaCollider areaTrigger;
     [SerializeField] private Rigidbody2D rb;
+    private GameManager gameManager;
 
     [Header("Configs")]
     [SerializeField] private float speed;
@@ -39,6 +40,8 @@ public class Player : MonoBehaviour, IRestartable
     {
         ServiceLocator serviceLocator = ServiceLocator.Instance;
 
+        gameManager = serviceLocator.GetService<GameManager>();
+
         eventBus = serviceLocator.GetService<EventBus>();
         inputController = serviceLocator.GetService<InputSystemController>();
 
@@ -52,12 +55,14 @@ public class Player : MonoBehaviour, IRestartable
 
     public void Restart(Transform position)
     {
+        isTraveling = false;
+        rb.linearVelocity = Vector2.zero;
         transform.position = startPos;
     }
 
     private void HandleSwipe(OnSwipe data)
     {
-        if (!isTraveling)
+        if (!isTraveling && !gameManager.GetIsPaused)
         {
             Launch(data.direction);
         }
