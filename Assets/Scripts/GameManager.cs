@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections.Generic;
 using Unity.VectorGraphics;
+using UnityEditor.ShaderGraph.Drawing;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] levelPrefabs;
     [SerializeField] private int maxLevelReached;
+
+    private HealthPoints playerHealth;
 
     private List<GameObject> savedLogs = new List<GameObject>();
 
@@ -22,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     private const string maxLevelReachKey = "MaxLevelWon";
     private const string moneyKey = "Money";
+    private const string maxHealthKey = "MaxHealth";
 
     public string GetMainMenuSceneName { get { return mainMenuSceneName; } }
 
@@ -37,10 +41,19 @@ public class GameManager : MonoBehaviour
 
     public int GetCurrentMoney { get { return moneyAmount; } }
 
+    public HealthPoints GetPlayerHealthPoints { get { return playerHealth; } }
+
     private void Awake()
     {
         maxLevelReached = PlayerPrefs.GetInt(maxLevelReachKey, maxLevelReached);
         moneyAmount = PlayerPrefs.GetInt(moneyKey, moneyAmount);
+
+        playerHealth.maxHp = PlayerPrefs.GetInt(maxHealthKey, playerHealth.maxHp);
+        if (playerHealth.maxHp == 0)
+        {
+            playerHealth.maxHp = 1;
+        }
+        playerHealth.hp = playerHealth.maxHp;
     }
 
     public void AddGameLog(GameObject log)
@@ -65,6 +78,11 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = isPaused ? 0f : 1f;
         this.isPaused = isPaused;
+    }
+
+    private void UpdateHealthPrefs()
+    {
+        PlayerPrefs.SetInt(maxHealthKey, playerHealth.maxHp);
     }
 
     private void UpdateLevelPrefs()

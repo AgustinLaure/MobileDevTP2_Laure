@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
+
 
 public class Player : MonoBehaviour, IRestartable
 {
@@ -18,6 +20,9 @@ public class Player : MonoBehaviour, IRestartable
     [SerializeField] private float wallCheckDistance;
 
     private Vector3 startPos = Vector3.zero;
+
+    private int hp = 1;
+    private int maxHp = 1;
 
     private InputSystemController inputController;
     private EventBus eventBus;
@@ -47,11 +52,16 @@ public class Player : MonoBehaviour, IRestartable
         inputController = serviceLocator.GetService<InputSystemController>();
 
         eventBus.Subscribe<OnSwipe>((Action<OnSwipe>)HandleSwipe);
+        eventBus.Subscribe<OnHitPlayer>((Action<OnHitPlayer>)HandleHit);
         areaTrigger.OnColliderEntered += HandleWallCollision;
 
         dashCooldownTimer = new WaitForSeconds(dashCooldown);
 
         startPos = transform.position;
+
+        maxHp = gameManager.GetPlayerHealthPoints.maxHp;
+        hp = maxHp;
+        eventBus.Raise<OnUpdateHp>(maxHp, hp);
     }
 
     public void Restart(Transform position)
@@ -59,6 +69,18 @@ public class Player : MonoBehaviour, IRestartable
         isTraveling = false;
         rb.linearVelocity = Vector2.zero;
         transform.position = startPos;
+        hp = maxHp;
+        eventBus.Raise<OnUpdateHp>(maxHp, hp);
+    }
+
+    private void HandleHit(OnHitPlayer data)
+    {
+        hp -= data.damage;
+        if (hp < 0)
+        {
+            hp = 0;
+            eventBus.Raise<OnRetry>();
+        }
     }
 
     private void HandleSwipe(OnSwipe data)

@@ -30,6 +30,9 @@ public class GameplayUI : MonoBehaviour
 
     [SerializeField] private float disabledContinueAlpha;
 
+    [SerializeField] private CanvasGroup[] heartImages;
+    [SerializeField] private float lostHealthAlpha;
+
     private void Awake()
     {
         resultMainMenuButton.onClick.AddListener(HandleResultMainMenu);
@@ -49,6 +52,7 @@ public class GameplayUI : MonoBehaviour
         eventBus.Subscribe<OnGameEnded>((Action<OnGameEnded>)HandleGameWin);
         eventBus.Subscribe<OnUpdateCoins>((Action<OnUpdateCoins>)HandleCoinValueChange);
         eventBus.Subscribe<OnUpdateTimer>((Action<OnUpdateTimer>)HandleTimerChanged);
+        eventBus.Subscribe<OnUpdateHp>((Action<OnUpdateHp>)HandleHealthChanged);
     }
 
     private void HandleTimerChanged(OnUpdateTimer data)
@@ -56,6 +60,19 @@ public class GameplayUI : MonoBehaviour
         gameplayTimerText.text = GetTimeFormat(data.value);
     }
 
+    private void HandleHealthChanged(OnUpdateHp data)
+    {
+        for (int i = 0; i < heartImages.Length; i++)
+        {
+            heartImages[i].gameObject.SetActive(false);
+
+            if (i < data.maxHp)
+            {
+                heartImages[i].gameObject.SetActive(true);
+                heartImages[i].alpha = i < data.hp ? 1f : lostHealthAlpha;
+            }
+        }
+    }
 
     private string GetTimeFormat(float amount)
     {
@@ -144,5 +161,6 @@ public class GameplayUI : MonoBehaviour
 
         eventBus.Unsubscribe<OnGameEnded>((Action<OnGameEnded>)HandleGameWin);
         eventBus.Unsubscribe<OnPickCoin>((Action<OnUpdateCoins>)HandleCoinValueChange);
+        eventBus.Unsubscribe<OnUpdateHp>((Action<OnUpdateHp>)HandleHealthChanged);
     }
 }
