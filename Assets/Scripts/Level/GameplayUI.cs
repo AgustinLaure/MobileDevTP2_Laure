@@ -13,6 +13,10 @@ public class GameplayUI : MonoBehaviour
     [SerializeField] private Button retryButton;
     [SerializeField] private Button continueButton;
 
+    [SerializeField] private CanvasGroup continueButtonCG;
+
+    [SerializeField] private float disabledContinueAlpha;
+
     private void Awake()
     {
         mainMenuButton.onClick.AddListener(HandleMainMenu);
@@ -30,6 +34,12 @@ public class GameplayUI : MonoBehaviour
     private void HandleGameEnd(OnGameEnded data)
     {
         UiUtils.SetCanvasActive(resultScreenCanvasGroup, true);
+
+        if (gameManager.IsCurrentLastLevel())
+        {
+            UiUtils.SetCanvasActive(continueButtonCG, false);
+            continueButtonCG.alpha = disabledContinueAlpha;
+        }
     }
 
     private void HandleMainMenu()
@@ -45,7 +55,7 @@ public class GameplayUI : MonoBehaviour
 
     private void HandleContinue()
     {
-
+        gameManager.LoadLevel(gameManager.GetCurrentLevelIndex + 1);
     }
 
     private void OnDestroy()

@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] levelPrefabs;
 
-    private int currentLevel = -1;
+    private int currentLevelIndex = -1;
 
     private const string mainMenuSceneName = "MainMenu";
     private const string gameplaySceneName = "Gameplay";
@@ -16,11 +16,14 @@ public class GameManager : MonoBehaviour
 
     public string GetGameplaySceneName { get { return gameplaySceneName; } }
 
+    public int GetCurrentLevelIndex { get { return currentLevelIndex; } }
+
+
     public bool GetCurrentLevelPrefab(out GameObject levelPrefab)
     {
-        if (currentLevel > 0 && currentLevel < levelPrefabs.Length)
+        if (currentLevelIndex >= 0 && currentLevelIndex < levelPrefabs.Length)
         {
-            levelPrefab = levelPrefabs[currentLevel];
+            levelPrefab = levelPrefabs[currentLevelIndex];
             return true;
         }
         else
@@ -30,10 +33,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public bool GetLevelPrefab(int index, out GameObject levelPrefab)
+    {
+        if (GetCurrentLevelPrefab(out GameObject prefab))
+        {
+            levelPrefab = prefab;
+            return true;
+        }
+        else
+        {
+            levelPrefab = null;
+        }
+
+        return false;
+    }
+
+    public bool IsCurrentLastLevel()
+    {
+        return currentLevelIndex + 1 >= levelPrefabs.Length;
+    }
+
     public void LoadLevel(int index)
     {
+        currentLevelIndex = index;
         SceneManager.LoadScene(gameplaySceneName);
-        currentLevel = index;
     }
 
     public void LoadScene(string sceneName)

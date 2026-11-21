@@ -712,6 +712,7 @@ GameObject:
   - component: {fileID: 858853367}
   - component: {fileID: 858853366}
   - component: {fileID: 858853365}
+  - component: {fileID: 858853368}
   m_Layer: 5
   m_Name: Continue
   m_TagString: Untagged
@@ -821,6 +822,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858853363}
   m_CullTransparentMesh: 1
+--- !u!225 &858853368
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858853363}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &942289743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,6 +1822,8 @@ MonoBehaviour:
   mainMenuButton: {fileID: 65006896}
   retryButton: {fileID: 1089149631}
   continueButton: {fileID: 858853365}
+  continueButtonCG: {fileID: 858853368}
+  disabledContinueAlpha: 0.5
 --- !u!1 &2075172830
 GameObject:
   m_ObjectHideFlags: 0

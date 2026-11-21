@@ -44,5 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c957faf6dd7b1a64e96d38fa1487da3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  levelPrefab:
+  levelPrefabs:
   - {fileID: 7349904423659162123, guid: e54fa63d284a7254eaedcae5e7299202, type: 3}
+  - {fileID: 7349904423659162123, guid: 89dbceb180802d0428d50069ba391e77, type: 3}
+  - {fileID: 7349904423659162123, guid: bed266cb1d7d612459e0b010f592d5a0, type: 3}
