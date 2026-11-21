@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private int moneyAmount = 0;
 
     private bool isPaused = false;
+    private bool isMuted = false;
 
     private const string mainMenuSceneName = "MainMenu";
     private const string gameplaySceneName = "Gameplay";
@@ -40,6 +41,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> GetSavedLogs { get { return savedLogs; } }
 
     public int GetCurrentMoney { get { return moneyAmount; } }
+
+    public bool GetIsMuted { get { return isMuted; } }
 
     public HealthPoints GetPlayerHealthPoints { get { return playerHealth; } }
 
@@ -74,15 +77,30 @@ public class GameManager : MonoBehaviour
         savedLogs.Clear();
     }
 
+    public void ToggleMute()
+    {
+        isMuted = !isMuted;
+        //logica de mute
+    }
+
+    public void AddMaxHealth(int amount)
+    {
+        playerHealth.maxHp += amount;
+        PlayerPrefs.SetInt(maxHealthKey, playerHealth.maxHp);
+    }
+
     public void SetPause(bool isPaused)
     {
         Time.timeScale = isPaused ? 0f : 1f;
         this.isPaused = isPaused;
     }
 
-    private void UpdateHealthPrefs()
+    public void BuyHealth(int healthAdd, int moneySubtract)
     {
-        PlayerPrefs.SetInt(maxHealthKey, playerHealth.maxHp);
+        AddMaxHealth(healthAdd);
+        moneyAmount -= moneySubtract;
+
+        PlayerPrefs.SetInt(moneyKey, moneyAmount);
     }
 
     private void UpdateLevelPrefs()

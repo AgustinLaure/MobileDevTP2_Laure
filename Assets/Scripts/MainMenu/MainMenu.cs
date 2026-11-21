@@ -1,3 +1,6 @@
+using JetBrains.Annotations;
+using System;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +24,11 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] private Button logBackButton;
 
+    [SerializeField] private Button shopButton;
+    [SerializeField] private Button shopBackButton;
+
+    [SerializeField] private CanvasGroup shopCG;
+
     [SerializeField] private CanvasGroup[] levelSelectCG;
 
     [SerializeField] private Button creditsBackButton;
@@ -29,7 +37,13 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] private TMPro.TMP_Text moneyText;
 
+    [SerializeField] private Image muteImage;
+
+    [SerializeField] private Sprite mutedSprite;
+    [SerializeField] private Sprite unmutedSprite;
+
     private GameManager gameManager;
+    private EventBus eventBus;
 
     private void Awake()
     {
@@ -47,9 +61,15 @@ public class MainMenu : MonoBehaviour
 
         logBackButton.onClick.AddListener(HandleLogBack);
 
+        shopButton.onClick.AddListener(HandleShopButton);
+        shopBackButton.onClick.AddListener(HandleShopBackButton);
+
         ServiceLocator serviceLocator = ServiceLocator.Instance;
 
         gameManager = serviceLocator.GetService<GameManager>();
+        eventBus = serviceLocator.GetService<EventBus>();
+
+        eventBus.Subscribe<OnMainMenuUpdateMoney>((Action)HandleUpdateMoney);
 
         gameManager.SetPause(false);
 
@@ -75,6 +95,16 @@ public class MainMenu : MonoBehaviour
         moneyText.text = gameManager.GetCurrentMoney.ToString();
     }
 
+    private void HandleShopButton()
+    {
+        UiUtils.SetCanvasActive(shopCG, true);
+    }
+
+    private void HandleShopBackButton()
+    {
+        UiUtils.SetCanvasActive(shopCG, false);
+    }
+
     private void HandleMainMenuPlay()
     {
         UiUtils.SetCanvasActive(levelSelectGC, true);
@@ -92,9 +122,15 @@ public class MainMenu : MonoBehaviour
         UiUtils.SetCanvasActive(logsGC, true);
     }
 
+    private void HandleUpdateMoney()
+    {
+        moneyText.text = gameManager.GetCurrentMoney.ToString();
+    }
+
     private void HandleMainMenuMute()
     {
-        //mute functionality
+        gameManager.ToggleMute();
+        muteImage.sprite = gameManager.GetIsMuted ? mutedSprite : unmutedSprite;
     }
 
     private void HandleLevelSelectLevel1()
@@ -144,5 +180,10 @@ public class MainMenu : MonoBehaviour
         creditsBackButton.onClick.RemoveListener(HandleCreditsBack);
 
         logBackButton.onClick.RemoveListener(HandleLogBack);
+
+        shopButton.onClick.RemoveListener(HandleShopButton);
+        shopBackButton.onClick.RemoveListener(HandleShopBackButton);
+
+        eventBus.Unsubscribe<OnMainMenuUpdateMoney>((Action)HandleUpdateMoney);
     }
 }
