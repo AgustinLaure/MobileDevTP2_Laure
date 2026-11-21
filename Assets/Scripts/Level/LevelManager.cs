@@ -8,12 +8,20 @@ public class LevelManager : MonoBehaviour
     private EventBus eventBus;
     private GameManager gameManager;
 
+    private int coinAmount = 0;
+    private float timer = 0f;
+
+    private LevelData currentLevelData = null;
+    public int GetCoinAmount { get { return coinAmount; } }
+
     private void Awake()
     {
         ServiceLocator serviceLocator = ServiceLocator.Instance;
 
         eventBus = serviceLocator.GetService<EventBus>();
         eventBus.Subscribe<OnRetry>((Action)HandleRetry);
+        eventBus.Subscribe<OnPickCoin>((Action<OnPickCoin>)HandlePickCoin);
+        eventBus.Subscribe<OnGameEndRequest>((Action<OnGameEndRequest>)HandleEndRequest);
 
         gameManager = serviceLocator.GetService<GameManager>();
     }
@@ -37,8 +45,35 @@ public class LevelManager : MonoBehaviour
             }
         }
 
+        currentLevelData = FindAnyObjectByType<Level>().GetLevelData;
+
+        timer = currentLevelData.maxTime;
+
         gameManager.SetPause(false);
     }
+
+    private void HandleEndRequest(OnGameEndRequest data)
+    {
+        eventBus.Raise<OnGameEnded>(data.hasWon, timer, coinAmount);
+        gameManager.AddMoney(coinAmount);
+    }
+
+    private void Update()
+    {
+        timer -= Time.deltaTime;
+        eventBus.Raise<OnUpdateTimer>(timer);
+
+        if (timer <= 0f)
+        {
+            HandleRetry();
+        }
+    }
+    private void HandlePickCoin(OnPickCoin data)
+    {
+        coinAmount += data.value;
+        eventBus.Raise<OnUpdateCoins>(coinAmount);
+    }
+
 
     private void HandleRetry()
     {
@@ -46,10 +81,16 @@ public class LevelManager : MonoBehaviour
         {
             entity.Restart();
         }
+
+        timer = currentLevelData.maxTime;
+        coinAmount = 0;
+        eventBus.Raise<OnUpdateCoins>(coinAmount);
     }
 
     private void OnDestroy()
     {
         eventBus.Unsubscribe<OnRetry>((Action)HandleRetry);
+        eventBus.Unsubscribe<OnPickCoin>((Action<OnPickCoin>)HandlePickCoin);
+        eventBus.Unsubscribe<OnGameEndRequest>((Action<OnGameEndRequest>)HandleEndRequest);
     }
 }

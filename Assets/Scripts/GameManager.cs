@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System.Collections.Generic;
 using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,7 +9,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] levelPrefabs;
     [SerializeField] private int maxLevelReached;
 
+    private List<GameObject> savedLogs = new List<GameObject>();
+
     private int currentLevelIndex = -1;
+
+    private int moneyAmount = 0;
 
     private bool isPaused = false;
 
@@ -16,6 +21,7 @@ public class GameManager : MonoBehaviour
     private const string gameplaySceneName = "Gameplay";
 
     private const string maxLevelReachKey = "MaxLevelWon";
+    private const string moneyKey = "Money";
 
     public string GetMainMenuSceneName { get { return mainMenuSceneName; } }
 
@@ -27,9 +33,32 @@ public class GameManager : MonoBehaviour
 
     public int GetMaxLevelReached { get { return maxLevelReached; } }
 
+    public List<GameObject> GetSavedLogs { get { return savedLogs; } }
+
+    public int GetCurrentMoney { get { return moneyAmount; } }
+
     private void Awake()
     {
         maxLevelReached = PlayerPrefs.GetInt(maxLevelReachKey, maxLevelReached);
+        moneyAmount = PlayerPrefs.GetInt(moneyKey, moneyAmount);
+    }
+
+    public void AddGameLog(GameObject log)
+    {
+        savedLogs.Add(log);
+    }
+
+    public void DeleteGameLogs()
+    {
+        foreach (GameObject log in savedLogs)
+        {
+            if (log != null)
+            {
+                Destroy(log);
+            }
+        }
+
+        savedLogs.Clear();
     }
 
     public void SetPause(bool isPaused)
@@ -50,6 +79,13 @@ public class GameManager : MonoBehaviour
             maxLevelReached = currentLevelIndex;
             UpdateLevelPrefs();
         }
+    }
+
+    public void AddMoney(int amount)
+    {
+        moneyAmount += amount;
+
+        PlayerPrefs.SetInt(moneyKey, moneyAmount);
     }
 
     public void SetLevelWon(int index, bool state)

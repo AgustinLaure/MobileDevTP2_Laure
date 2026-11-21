@@ -46,5 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   levelPrefabs:
   - {fileID: 7349904423659162123, guid: e54fa63d284a7254eaedcae5e7299202, type: 3}
-  - {fileID: 7349904423659162123, guid: 97aeec73546a6ef4ca9882a76761a42c, type: 3}
-  - {fileID: 7349904423659162123, guid: 2248cd8edf643524383ea06e4ef0b91e, type: 3}
+  - {fileID: 7349904423659162123, guid: 6975ee0014858384295061f37240fa9b, type: 3}
+  - {fileID: 7349904423659162123, guid: 6f6329991d70c604288e06ef5b584e5d, type: 3}
+  maxLevelReached: 0

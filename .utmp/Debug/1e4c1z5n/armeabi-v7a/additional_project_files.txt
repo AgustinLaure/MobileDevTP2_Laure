@@ -1,0 +1,17 @@
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\GAToUnityCallbacks.h
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\MacroEnd.h
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\MacroHeaderBegin.h
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\MacroSourceBegin.h
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAApplication.h
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAConfiguration.h
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGADebug.h
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAEvents.h
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAInput.h
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGASoftKeyboard.h
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGASoftKeyboardCallbacks.h
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGATypes.h
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAVersion.h
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UnityToGACallbacks.h
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UnityToGAConfigurationCallbacks.h
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UnityToGAKeyEventCallbacks.h
+C:\materias_trabajos_facultad\4to\Moviles\MobileDevTP1_Laure\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UnityToGAMotionEventCallbacks.h

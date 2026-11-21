@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,17 +12,22 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private CanvasGroup mainMenuGC;
     [SerializeField] private CanvasGroup levelSelectGC;
     [SerializeField] private CanvasGroup creditsGC;
+    [SerializeField] private CanvasGroup logsGC;
 
     [SerializeField] private Button levelSelectLevel1Button;
     [SerializeField] private Button levelSelectLevel2Button;
     [SerializeField] private Button levelSelectLevel3Button;
     [SerializeField] private Button levelSelectBackButton;
 
+    [SerializeField] private Button logBackButton;
+
     [SerializeField] private CanvasGroup[] levelSelectCG;
 
     [SerializeField] private Button creditsBackButton;
 
     [SerializeField] private float nonSelectableLevelAlpha;
+
+    [SerializeField] private TMPro.TMP_Text moneyText;
 
     private GameManager gameManager;
 
@@ -38,6 +44,8 @@ public class MainMenu : MonoBehaviour
         levelSelectBackButton.onClick.AddListener(HandleLevelSelectBack);
 
         creditsBackButton.onClick.AddListener(HandleCreditsBack);
+
+        logBackButton.onClick.AddListener(HandleLogBack);
 
         ServiceLocator serviceLocator = ServiceLocator.Instance;
 
@@ -62,6 +70,11 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        moneyText.text = gameManager.GetCurrentMoney.ToString();
+    }
+
     private void HandleMainMenuPlay()
     {
         UiUtils.SetCanvasActive(levelSelectGC, true);
@@ -75,7 +88,8 @@ public class MainMenu : MonoBehaviour
 
     private void HandleMainMenuLogs()
     {
-        //load logs scene
+        UiUtils.SetCanvasActive(mainMenuGC, false);
+        UiUtils.SetCanvasActive(logsGC, true);
     }
 
     private void HandleMainMenuMute()
@@ -109,6 +123,12 @@ public class MainMenu : MonoBehaviour
         UiUtils.SetCanvasActive(mainMenuGC, true);
     }
 
+    private void HandleLogBack()
+    {
+        UiUtils.SetCanvasActive(logsGC, false);
+        UiUtils.SetCanvasActive(mainMenuGC, true);
+    }
+
     private void OnDestroy()
     {
         mainMenuPlayButton.onClick.RemoveListener(HandleMainMenuPlay);
@@ -122,5 +142,7 @@ public class MainMenu : MonoBehaviour
         levelSelectBackButton.onClick.RemoveListener(HandleLevelSelectBack);
 
         creditsBackButton.onClick.RemoveListener(HandleCreditsBack);
+
+        logBackButton.onClick.RemoveListener(HandleLogBack);
     }
 }

@@ -1,0 +1,5 @@
+C:/materias_trabajos_facultad/4to/Moviles/MobileDevTP1_Laure/.utmp/Debug/1e4c1z5n/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/materias_trabajos_facultad/4to/Moviles/MobileDevTP1_Laure/.utmp/Debug/1e4c1z5n/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/materias_trabajos_facultad/4to/Moviles/MobileDevTP1_Laure/.utmp/Debug/1e4c1z5n/arm64-v8a/GameActivity/CMakeFiles/game.dir
+C:/materias_trabajos_facultad/4to/Moviles/MobileDevTP1_Laure/.utmp/Debug/1e4c1z5n/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+C:/materias_trabajos_facultad/4to/Moviles/MobileDevTP1_Laure/.utmp/Debug/1e4c1z5n/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir

@@ -1,5 +1,5 @@
 using System;
-using UnityEditor.Build.Content;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +22,12 @@ public class GameplayUI : MonoBehaviour
     [SerializeField] private CanvasGroup continueButtonCG;
     [SerializeField] private CanvasGroup pauseButtonCG;
 
+    [SerializeField] private TMPro.TMP_Text gameplayCoinAmountText;
+    [SerializeField] private TMPro.TMP_Text gameplayTimerText;
+
+    [SerializeField] private TMPro.TMP_Text resultCoinAmountText;
+    [SerializeField] private TMPro.TMP_Text resultTimerText;
+
     [SerializeField] private float disabledContinueAlpha;
 
     private void Awake()
@@ -41,6 +47,25 @@ public class GameplayUI : MonoBehaviour
         eventBus = serviceLocator.GetService<EventBus>();
 
         eventBus.Subscribe<OnGameEnded>((Action<OnGameEnded>)HandleGameWin);
+        eventBus.Subscribe<OnUpdateCoins>((Action<OnUpdateCoins>)HandleCoinValueChange);
+        eventBus.Subscribe<OnUpdateTimer>((Action<OnUpdateTimer>)HandleTimerChanged);
+    }
+
+    private void HandleTimerChanged(OnUpdateTimer data)
+    {
+        gameplayTimerText.text = GetTimeFormat(data.value);
+    }
+
+
+    private string GetTimeFormat(float amount)
+    {
+        TimeSpan time = TimeSpan.FromSeconds(amount);
+        return time.ToString(@"mm\:ss");
+    }
+
+    private void HandleCoinValueChange(OnUpdateCoins data)
+    {
+        gameplayCoinAmountText.text = data.newAmount.ToString();
     }
 
     private void HandleGameWin(OnGameEnded data)
@@ -53,6 +78,10 @@ public class GameplayUI : MonoBehaviour
             continueButtonCG.alpha = disabledContinueAlpha;
         }
 
+        resultCoinAmountText.text = data.moneyAmount.ToString();
+        resultTimerText.text = GetTimeFormat(data.timeLeft);
+
+        Debug.Log("Level won");
         gameManager.SetCurrentLevelWon();
         gameManager.SetPause(true);
     }
@@ -91,6 +120,7 @@ public class GameplayUI : MonoBehaviour
     {
         gameManager.SetPause(false);
         eventBus.Raise<OnRetry>();
+        UiUtils.SetCanvasActive(pauseButtonCG, true);
         UiUtils.SetCanvasActive(pauseScreenCanvasGroup, false);
     }
 
@@ -113,5 +143,6 @@ public class GameplayUI : MonoBehaviour
         pauseResumeButton.onClick.RemoveListener(HandlePauseResume);
 
         eventBus.Unsubscribe<OnGameEnded>((Action<OnGameEnded>)HandleGameWin);
+        eventBus.Unsubscribe<OnPickCoin>((Action<OnUpdateCoins>)HandleCoinValueChange);
     }
 }
