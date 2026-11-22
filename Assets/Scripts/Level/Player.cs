@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 
 public class Player : MonoBehaviour, IRestartable
@@ -147,10 +146,9 @@ public class Player : MonoBehaviour, IRestartable
         {
             rb.AddForce(direction * speed, pushForceMode);
             isTraveling = true;
+            this.direction = direction;
+            spriteRenderer.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
         }
-        this.direction = direction;
-
-        spriteRenderer.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
     }
 
     private void HandleWallCollision(Collision2D collision)
