@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0e1059e04aafd414783a42f97cfba12d
+guid: ac93e1de49a05534e97158f74977d7c8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5488370903067918852
-    second: moneda_0
+      213: -1935691115665551758
+    second: death-skull_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: moneda_0
+      name: death-skull_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 512
-        height: 512
+        x: 15
+        y: 15
+        width: 482
+        height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 40204f8f14c9a2c40800000000000000
-      internalID: 5488370903067918852
+      spriteID: 27e00ef9f2b0325e0800000000000000
+      internalID: -1935691115665551758
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      moneda_0: 5488370903067918852
+      death-skull_0: -1935691115665551758
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

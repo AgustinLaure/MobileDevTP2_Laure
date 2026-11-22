@@ -412,7 +412,19 @@ PrefabInstance:
     - target: {fileID: 62443173196618588, guid: f4d1547deba3a8d4ba7dba7c23ec5bf5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0e1059e04aafd414783a42f97cfba12d, type: 3}
+      objectReference: {fileID: 21300000, guid: 27c35626322d64641821ecd5dc2edacc, type: 3}
+    - target: {fileID: 62443173196618588, guid: f4d1547deba3a8d4ba7dba7c23ec5bf5, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 62443173196618588, guid: f4d1547deba3a8d4ba7dba7c23ec5bf5, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 62443173196618588, guid: f4d1547deba3a8d4ba7dba7c23ec5bf5, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 140263997317581132, guid: f4d1547deba3a8d4ba7dba7c23ec5bf5, type: 3}
       propertyPath: m_Name
       value: CoinMarker

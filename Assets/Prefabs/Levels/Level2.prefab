@@ -2467,7 +2467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc4fbc9f56f44e43b074e37707d66c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Level
-  levelData: {fileID: 11400000, guid: f21dc9c3754920e42a6c296d278959b6, type: 2}
+  levelData: {fileID: 11400000, guid: b424b362de22f3d4d8a9f2624a79d3a4, type: 2}
 --- !u!1 &8657850203597935937
 GameObject:
   m_ObjectHideFlags: 0
@@ -2908,6 +2908,10 @@ PrefabInstance:
       value: 0.7526699
       objectReference: {fileID: 0}
     - target: {fileID: 3132622414308102805, guid: f81e39dda97e7cd44ab4fc0deae5a363, type: 3}
+      propertyPath: grid
+      value: 
+      objectReference: {fileID: 6687020050655243390}
+    - target: {fileID: 3132622414308102805, guid: f81e39dda97e7cd44ab4fc0deae5a363, type: 3}
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
@@ -2929,7 +2933,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3132622414308102805, guid: f81e39dda97e7cd44ab4fc0deae5a363, type: 3}
       propertyPath: wallCheckDistance
-      value: 0.46
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 4249340769261011294, guid: f81e39dda97e7cd44ab4fc0deae5a363, type: 3}
       propertyPath: m_LocalScale.x

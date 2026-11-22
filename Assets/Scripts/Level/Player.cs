@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, IRestartable
     [Header("References")]
     [SerializeField] private AreaCollider areaTrigger;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Grid grid;
     private GameManager gameManager;
 
     [Header("Configs")]
@@ -64,6 +65,11 @@ public class Player : MonoBehaviour, IRestartable
         eventBus.Raise<OnUpdateHp>(maxHp, hp);
     }
 
+    private void Start()
+    {
+        SnapToGrid();
+    }
+
     public void Restart(Transform position)
     {
         isTraveling = false;
@@ -76,7 +82,9 @@ public class Player : MonoBehaviour, IRestartable
     private void HandleHit(OnHitPlayer data)
     {
         hp -= data.damage;
-        if (hp < 0)
+        eventBus.Raise<OnUpdateHp>(maxHp, hp);
+
+        if (hp <= 0)
         {
             hp = 0;
             eventBus.Raise<OnRetry>();
@@ -96,6 +104,16 @@ public class Player : MonoBehaviour, IRestartable
         yield return dashCooldownTimer;
 
         isTraveling = false;
+    }
+
+    private void SnapToGrid()
+    {
+        Vector3Int cellPosition = grid.WorldToCell(transform.position);
+
+        Vector3 cellCenter = grid.GetCellCenterWorld(cellPosition);
+        cellCenter.z = transform.position.z;
+
+        transform.position = cellCenter;
     }
 
     private void Launch(Vector2 direction)
@@ -128,12 +146,13 @@ public class Player : MonoBehaviour, IRestartable
             }
 
             dashCooldownCoroutine = StartCoroutine(DashCooldownCoroutine());
+            SnapToGrid();
         }
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawCube((Vector2)wallCheck.bounds.center + new Vector2(0f, 1f) * wallCheckDistance, wallCheck.bounds.size);
+        //Gizmos.DrawCube((Vector2)wallCheck.bounds.center + new Vector2(0f, 1f) * wallCheckDistance, wallCheck.bounds.size);
     }
 
     private void OnDestroy()
