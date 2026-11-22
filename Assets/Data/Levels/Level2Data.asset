@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28c09e3476eaeb42814acbca2d21a8f, type: 3}
   m_Name: Level2Data
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  maxTime: 20
+  maxTime: 40

@@ -2534,6 +2534,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -2608,6 +2612,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -2756,6 +2764,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -2830,6 +2842,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -2904,6 +2920,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -2978,6 +2998,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -3126,6 +3150,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -3274,6 +3302,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -3348,6 +3380,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -3422,6 +3458,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -3570,6 +3610,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -3644,6 +3688,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -3718,6 +3766,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -3792,6 +3844,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -3940,6 +3996,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -4014,6 +4074,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -4162,6 +4226,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -4236,6 +4304,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -4458,6 +4530,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -4532,6 +4608,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin (1)
@@ -4606,6 +4686,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -4680,6 +4764,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -4754,6 +4842,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -4828,6 +4920,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -4902,6 +4998,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -5050,6 +5150,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -5198,6 +5302,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -5420,6 +5528,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -5494,6 +5606,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -5642,6 +5758,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -5716,6 +5836,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -5790,6 +5914,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -5864,6 +5992,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -5938,6 +6070,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -6163,6 +6299,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -6237,6 +6377,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -6311,6 +6455,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -6385,6 +6533,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -6459,6 +6611,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -6533,6 +6689,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -6607,6 +6767,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -6681,6 +6845,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -6829,6 +6997,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -6903,6 +7075,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -6977,6 +7153,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -7051,6 +7231,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -7125,6 +7309,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -7199,6 +7387,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -7273,6 +7465,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 450876930064345320}
     m_Modifications:
+    - target: {fileID: 557390947715308970, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3708302793596976501, guid: 2003bb92ad7ae4544b573bf57ba74dee, type: 3}
       propertyPath: m_Name
       value: Coin
