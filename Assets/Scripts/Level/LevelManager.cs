@@ -79,6 +79,7 @@ public class LevelManager : MonoBehaviour
     }
     private void HandlePickCoin(OnPickCoin data)
     {
+        Debug.Log("CoinPicked");
         coinAmount += data.value;
         eventBus.Raise<OnUpdateCoins>(coinAmount);
     }
@@ -91,6 +92,7 @@ public class LevelManager : MonoBehaviour
             entity.Restart();
         }
 
+        Debug.Log("LevelRetry");
         timer = currentLevelData.maxTime;
         coinAmount = 0;
         eventBus.Raise<OnUpdateCoins>(coinAmount);

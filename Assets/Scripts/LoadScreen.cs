@@ -26,6 +26,7 @@ public class LoadScreen : MonoBehaviour
     private void Start()
     {
         StartCoroutine(LoadCoroutine());
+        Debug.Log("StartedLoadScreen");
     }
 
     private IEnumerator LoadCoroutine()
@@ -50,6 +51,8 @@ public class LoadScreen : MonoBehaviour
         }
 
         yield return gameManager.FadeOut();
+
+        Debug.Log("EndLoadScreen");
 
         loadOperation.allowSceneActivation = true;
     }

@@ -99,17 +99,20 @@ public class MainMenu : MonoBehaviour
 
     private void HandleShopButton()
     {
+        SetMainMenuButtonsInteractable(false);
         UiUtils.SetCanvasActive(shopCG, true);
     }
 
     private void HandleShopBackButton()
     {
+        SetMainMenuButtonsInteractable(true);
         UiUtils.SetCanvasActive(shopCG, false);
     }
 
     private void HandleMainMenuPlay()
     {
         UiUtils.SetCanvasActive(levelSelectGC, true);
+        SetMainMenuButtonsInteractable(false);
     }
 
     private void HandleMainMenuCredits()
@@ -153,9 +156,19 @@ public class MainMenu : MonoBehaviour
         gameManager.MenuMusic.Stop();
     }
 
+    private void SetMainMenuButtonsInteractable(bool state)
+    {
+        mainMenuMuteButton.interactable = state;
+        mainMenuPlayButton.interactable = state;
+        mainMenuCreditsButton.interactable = state;
+        mainMenuLogsButton.interactable = state;
+        shopButton.interactable = state;
+    }
+
     private void HandleLevelSelectBack()
     {
         UiUtils.SetCanvasActive(levelSelectGC, false);
+        SetMainMenuButtonsInteractable(true);
     }
 
     private void HandleCreditsBack()

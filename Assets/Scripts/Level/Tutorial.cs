@@ -32,7 +32,6 @@ public class Tutorial : MonoBehaviour
 
     private GameManager gameManager;
 
-    private WaitForSecondsRealtime tutorialTimer;
     private WaitForSecondsRealtime swipeLoopTimer;
     private WaitForSecondsRealtime gyroLoopTimer;
 
@@ -46,7 +45,6 @@ public class Tutorial : MonoBehaviour
 
     private void Awake()
     {
-        tutorialTimer = new WaitForSecondsRealtime(tutorialTime);
         swipeLoopTimer = new WaitForSecondsRealtime(swipeLoopTime);
         gyroLoopTimer = new WaitForSecondsRealtime(gyroLoopTime);
 
@@ -142,6 +140,9 @@ public class Tutorial : MonoBehaviour
         tutorialCanvasGroup.alpha = 0f;
 
         UiUtils.SetCanvasActive(backgroundCanvasGroup, false);
+
+        firstScreenCanvasGroup.gameObject.SetActive(false);
+        secondScreenCanvasGroup.gameObject.SetActive(false);
 
         gameManager.SetPause(false);
         tutorialCoroutine = null;

@@ -66,6 +66,7 @@ public class Shop : MonoBehaviour
 
     private void HandleBuy()
     {
+        Debug.Log("ShopBuy");
         gameManager.BuyHealth(hp, price);
         price *= priceMultiplier;
         priceText.text = price.ToString();
@@ -76,6 +77,7 @@ public class Shop : MonoBehaviour
         {
             DisableButton();
             priceText.text = maxText;
+            Debug.Log("ShopMaxed");
         }
         else
         {

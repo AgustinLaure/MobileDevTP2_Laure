@@ -94,6 +94,7 @@ public class Player : MonoBehaviour, IRestartable
 
     private void HandleHit(OnHitPlayer data)
     {
+        Debug.Log("PlayerTakeDamage");
         hp -= data.damage;
         eventBus.Raise<OnUpdateHp>(maxHp, hp);
         takeHitSound.Play();
