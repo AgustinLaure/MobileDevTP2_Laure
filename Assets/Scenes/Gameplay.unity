@@ -3672,6 +3672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1996129806}
   - component: {fileID: 1996129805}
+  - component: {fileID: 1996129807}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -3706,6 +3707,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1996129807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996129804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d672a0f55d516244adc2dc8b2f0ffce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FadeIn
 --- !u!225 &2072551521 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 1222134871322111927, guid: ae5f0609121be5845b7cc42fa57c3f5d, type: 3}
