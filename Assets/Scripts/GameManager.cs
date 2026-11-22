@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int maxLevelReached;
 
     [SerializeField] private float fadeTime;
+
+    [SerializeField] public AudioMixer audioMixer;
 
     private HealthPoints playerHealth;
 
@@ -32,6 +35,9 @@ public class GameManager : MonoBehaviour
     private const string moneyKey = "Money";
     private const string maxHealthKey = "MaxHealth";
 
+    private const string musicVolumeName = "MusicVolume";
+    private const string sfxVolumeName = "SfxVolume";
+
     public string GetMainMenuSceneName { get { return mainMenuSceneName; } }
 
     public string GetGameplaySceneName { get { return gameplaySceneName; } }
@@ -50,7 +56,10 @@ public class GameManager : MonoBehaviour
 
     public HealthPoints GetPlayerHealthPoints { get { return playerHealth; } }
 
-    [field:SerializeField] public Image Fade { get; set; }
+    [field: SerializeField] public Image Fade { get; set; }
+
+    [field: SerializeField] public AudioSource GameplayMusic { get; set; }
+    [field: SerializeField] public AudioSource MenuMusic { get; set; }
 
     public float GetFadeTime { get { return fadeTime; } }
 
@@ -65,6 +74,11 @@ public class GameManager : MonoBehaviour
             playerHealth.maxHp = 1;
         }
         playerHealth.hp = playerHealth.maxHp;
+    }
+
+    public void SetVolume(float volume, string mixer)
+    {
+
     }
 
     public void AddGameLog(GameObject log)
@@ -88,7 +102,8 @@ public class GameManager : MonoBehaviour
     public void ToggleMute()
     {
         isMuted = !isMuted;
-        //logica de mute
+        audioMixer.SetFloat(musicVolumeName, isMuted ? -80f : 0f);
+        audioMixer.SetFloat(sfxVolumeName, isMuted ? -80f : 0f);
     }
 
     public void AddMaxHealth(int amount)
@@ -216,6 +231,7 @@ public class GameManager : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         TargetScene = sceneName;
+
         StartCoroutine(LoadSceneCoroutine());
     }
 }

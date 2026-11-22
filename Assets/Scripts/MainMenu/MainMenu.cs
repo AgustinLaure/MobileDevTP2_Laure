@@ -93,6 +93,8 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         moneyText.text = gameManager.GetCurrentMoney.ToString();
+
+        gameManager.MenuMusic.Play();
     }
 
     private void HandleShopButton()
@@ -136,16 +138,19 @@ public class MainMenu : MonoBehaviour
     private void HandleLevelSelectLevel1()
     {
         gameManager.LoadLevel(0);
+        gameManager.MenuMusic.Stop();
     }
 
     private void HandleLevelSelectLevel2()
     {
         gameManager.LoadLevel(1);
+        gameManager.MenuMusic.Stop();
     }
 
     private void HandleLevelSelectLevel3()
     {
         gameManager.LoadLevel(2);
+        gameManager.MenuMusic.Stop();
     }
 
     private void HandleLevelSelectBack()

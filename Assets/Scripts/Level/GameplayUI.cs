@@ -105,6 +105,7 @@ public class GameplayUI : MonoBehaviour
 
     private void HandleResultMainMenu()
     {
+        gameManager.GameplayMusic.Stop();
         gameManager.LoadScene(gameManager.GetMainMenuSceneName);
     }
 
@@ -122,6 +123,7 @@ public class GameplayUI : MonoBehaviour
 
     private void HandlePauseMainMenu()
     {
+        gameManager.GameplayMusic.Stop();
         gameManager.SetPause(false);
         gameManager.LoadScene(gameManager.GetMainMenuSceneName);
     }

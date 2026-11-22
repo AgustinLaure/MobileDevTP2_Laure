@@ -2989,6 +2989,7 @@ GameObject:
   - component: {fileID: 977303983}
   - component: {fileID: 977303982}
   - component: {fileID: 977303986}
+  - component: {fileID: 977303987}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -3121,6 +3122,18 @@ MonoBehaviour:
   muteImage: {fileID: 355782788}
   mutedSprite: {fileID: 21300000, guid: 0ab1da4c27a154a48b85dbb42feb8082, type: 3}
   unmutedSprite: {fileID: 21300000, guid: 3b8084d3fffcd1446be0045b8e1393e8, type: 3}
+--- !u!114 &977303987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977303981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d672a0f55d516244adc2dc8b2f0ffce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FadeIn
 --- !u!1 &1023944185
 GameObject:
   m_ObjectHideFlags: 0

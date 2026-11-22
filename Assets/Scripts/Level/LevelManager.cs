@@ -50,6 +50,11 @@ public class LevelManager : MonoBehaviour
         timer = currentLevelData.maxTime;
 
         gameManager.SetPause(false);
+
+        if (!gameManager.GameplayMusic.isPlaying)
+        {
+            gameManager.GameplayMusic.Play();
+        }
     }
 
     private void HandleEndRequest(OnGameEndRequest data)
