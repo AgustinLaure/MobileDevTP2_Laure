@@ -19,10 +19,12 @@ public class DeathArea : MonoBehaviour, IRestartable
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     private bool isActive = false;
+    private bool hasHitPlayerThisBlink = false;
 
     private EventBus eventBus;
 
     private Coroutine blinkCoroutine = null;
+
 
     private WaitForSeconds blinkCooldownTimer;
     private WaitForSeconds blinkTimer;
@@ -48,6 +50,8 @@ public class DeathArea : MonoBehaviour, IRestartable
 
     private IEnumerator BlinkCoroutine()
     {
+        hasHitPlayerThisBlink = false;
+
         float t = 0f;
         Color startColor = blinkingColor;
         boxCollider.enabled = false;
@@ -82,9 +86,10 @@ public class DeathArea : MonoBehaviour, IRestartable
 
     private void HandleCollision(Collider2D collider)
     {
-        if (collider.CompareTag(Player.GetPlayerTag) && isActive)
+        if (collider.CompareTag(Player.GetPlayerTag) && isActive && !hasHitPlayerThisBlink)
         {
             eventBus.Raise<OnHitPlayer>(damage);
+            hasHitPlayerThisBlink = true;
         }
     }
 

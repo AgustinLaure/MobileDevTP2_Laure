@@ -1,7 +1,4 @@
-using JetBrains.Annotations;
 using System.Collections.Generic;
-using Unity.VectorGraphics;
-using UnityEditor.ShaderGraph.Drawing;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     private List<GameObject> savedLogs = new List<GameObject>();
 
-    private int currentLevelIndex = -1;
+    private int currentLevelIndex = 0;
 
     private int moneyAmount = 0;
 
@@ -110,9 +107,15 @@ public class GameManager : MonoBehaviour
 
     public void SetCurrentLevelWon()
     {
-        if (maxLevelReached < currentLevelIndex)
+        if (maxLevelReached <= currentLevelIndex)
         {
-            maxLevelReached = currentLevelIndex;
+            maxLevelReached = currentLevelIndex + 1;
+
+            if (maxLevelReached > levelPrefabs.Length)
+            {
+                maxLevelReached = levelPrefabs.Length - 1;
+            }
+
             UpdateLevelPrefs();
         }
     }

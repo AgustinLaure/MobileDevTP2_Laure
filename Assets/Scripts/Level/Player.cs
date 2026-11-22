@@ -10,6 +10,7 @@ public class Player : MonoBehaviour, IRestartable
     [SerializeField] private AreaCollider areaTrigger;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Grid grid;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private GameManager gameManager;
 
     [Header("Configs")]
@@ -19,6 +20,8 @@ public class Player : MonoBehaviour, IRestartable
 
     [SerializeField] private BoxCollider2D wallCheck;
     [SerializeField] private float wallCheckDistance;
+
+    [SerializeField] private float takeDamageTime;
 
     private Vector3 startPos = Vector3.zero;
 
@@ -36,10 +39,15 @@ public class Player : MonoBehaviour, IRestartable
     private ForceMode2D pushForceMode = ForceMode2D.Impulse;
 
     private Coroutine dashCooldownCoroutine = null;
+    private Coroutine takeDamageCoroutine = null;
+
+    private WaitForSeconds takeDamageTimer;
     private WaitForSeconds dashCooldownTimer;
 
+    private Vector3 direction = Vector3.zero;
 
     private const string playerTag = "Player";
+
 
     public static string GetPlayerTag { get { return playerTag; } }
 
@@ -57,6 +65,7 @@ public class Player : MonoBehaviour, IRestartable
         areaTrigger.OnColliderEntered += HandleWallCollision;
 
         dashCooldownTimer = new WaitForSeconds(dashCooldown);
+        takeDamageTimer = new WaitForSeconds(takeDamageTime);
 
         startPos = transform.position;
 
@@ -83,6 +92,13 @@ public class Player : MonoBehaviour, IRestartable
     {
         hp -= data.damage;
         eventBus.Raise<OnUpdateHp>(maxHp, hp);
+
+        if (takeDamageCoroutine != null)
+        {
+            StopCoroutine(takeDamageCoroutine);
+        }
+
+        takeDamageCoroutine = StartCoroutine(TakeDamageCoroutine());
 
         if (hp <= 0)
         {
@@ -132,6 +148,9 @@ public class Player : MonoBehaviour, IRestartable
             rb.AddForce(direction * speed, pushForceMode);
             isTraveling = true;
         }
+        this.direction = direction;
+
+        spriteRenderer.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
     }
 
     private void HandleWallCollision(Collision2D collision)
@@ -147,7 +166,31 @@ public class Player : MonoBehaviour, IRestartable
 
             dashCooldownCoroutine = StartCoroutine(DashCooldownCoroutine());
             SnapToGrid();
+            spriteRenderer.transform.rotation = Quaternion.LookRotation(Vector3.forward, -direction);
         }
+    }
+
+    private IEnumerator TakeDamageCoroutine()
+    {
+        float t = 0f;
+
+        Color startColor = spriteRenderer.color;
+        int mult = -1;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / takeDamageTime;
+            startColor.a = 1f * mult;
+            spriteRenderer.color = startColor;
+            mult *= -1;
+
+            yield return null;
+        }
+
+        startColor.a = 1f;
+        spriteRenderer.color = startColor;
+
+        takeDamageCoroutine = null;
     }
 
     private void OnDrawGizmos()

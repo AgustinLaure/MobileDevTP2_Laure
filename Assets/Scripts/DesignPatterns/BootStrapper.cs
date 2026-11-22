@@ -5,6 +5,9 @@ public static class BootStrapper
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void Init()
     {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+
         ServiceLocator serviceLocator = ServiceLocator.Instance;
 
         serviceLocator.AddService(new CompositePool());

@@ -81,7 +81,7 @@ public class MainMenu : MonoBehaviour
             levelSelectCG[i].alpha = nonSelectableLevelAlpha;
         }
 
-        for (int i = 0; i <= maxLevelReached + 1; i++)
+        for (int i = 0; i <= maxLevelReached; i++)
         {
             if (i < levelSelectCG.Length)
             {

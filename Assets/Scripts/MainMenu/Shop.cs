@@ -17,8 +17,6 @@ public class Shop : MonoBehaviour
 
     [SerializeField] private CanvasGroup[] currentHealthCG;
 
-    private int timesPurchased = 0;
-
     private GameManager gameManager;
     private EventBus eventBus;
 
@@ -39,10 +37,18 @@ public class Shop : MonoBehaviour
     {
         UpdateCurrentHealth();
 
-        priceText.text = price.ToString();
-        if (gameManager.GetCurrentMoney < price)
+        if (gameManager.GetPlayerHealthPoints.maxHp >= maxPurchases)
         {
             DisableButton();
+            priceText.text = maxText;
+        }
+        else
+        {
+            priceText.text = price.ToString();
+            if (gameManager.GetCurrentMoney < price)
+            {
+                DisableButton();
+            }
         }
 
         buyButton.onClick.AddListener(HandleBuy);
@@ -61,10 +67,9 @@ public class Shop : MonoBehaviour
         gameManager.BuyHealth(hp, price);
         price *= priceMultiplier;
         priceText.text = price.ToString();
-        timesPurchased++;
         eventBus.Raise<OnMainMenuUpdateMoney>();
 
-        if (timesPurchased >= maxPurchases)
+        if (gameManager.GetPlayerHealthPoints.maxHp >= maxPurchases)
         {
             DisableButton();
             priceText.text = maxText;
