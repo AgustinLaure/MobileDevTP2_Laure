@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour, IRestartable
 {
+    [SerializeField] private AudioSource sound;
+    [SerializeField] private GameObject body;
     [SerializeField] private AreaTrigger areaTrigger;
     [SerializeField] private int value;
     private EventBus eventBus;
-
     private void Awake()
     {
         areaTrigger.OnTriggerEntered += HandleCollider;
@@ -18,7 +19,8 @@ public class Coin : MonoBehaviour, IRestartable
         if (collider.CompareTag(Player.GetPlayerTag))
         {
             eventBus.Raise<OnPickCoin>(value);
-            gameObject.SetActive(false);
+            sound.Play();
+            body.SetActive(false);
         }
     }
 

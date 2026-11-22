@@ -10,6 +10,11 @@ public class Player : MonoBehaviour, IRestartable
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Grid grid;
     [SerializeField] private SpriteRenderer spriteRenderer;
+
+    [SerializeField] private AudioSource dashSound;
+    [SerializeField] private AudioSource wallImpactSound;
+    [SerializeField] private AudioSource takeHitSound;
+
     private GameManager gameManager;
 
     [Header("Configs")]
@@ -91,6 +96,7 @@ public class Player : MonoBehaviour, IRestartable
     {
         hp -= data.damage;
         eventBus.Raise<OnUpdateHp>(maxHp, hp);
+        takeHitSound.Play();
 
         if (takeDamageCoroutine != null)
         {
@@ -144,6 +150,7 @@ public class Player : MonoBehaviour, IRestartable
 
         if (hit.collider == null)
         {
+            dashSound.Play();
             rb.AddForce(direction * speed, pushForceMode);
             isTraveling = true;
             this.direction = direction;
@@ -153,18 +160,22 @@ public class Player : MonoBehaviour, IRestartable
 
     private void HandleWallCollision(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(wallTag))
+        if (!gameManager.GetIsPaused)
         {
-            rb.linearVelocity = Vector2.zero;
-
-            if (dashCooldownCoroutine != null)
+            if (collision.gameObject.CompareTag(wallTag))
             {
-                StopCoroutine(dashCooldownCoroutine);
-            }
+                rb.linearVelocity = Vector2.zero;
+                wallImpactSound.Play();
 
-            dashCooldownCoroutine = StartCoroutine(DashCooldownCoroutine());
-            SnapToGrid();
-            spriteRenderer.transform.rotation = Quaternion.LookRotation(Vector3.forward, -direction);
+                if (dashCooldownCoroutine != null)
+                {
+                    StopCoroutine(dashCooldownCoroutine);
+                }
+
+                dashCooldownCoroutine = StartCoroutine(DashCooldownCoroutine());
+                SnapToGrid();
+                spriteRenderer.transform.rotation = Quaternion.LookRotation(Vector3.forward, -direction);
+            }
         }
     }
 

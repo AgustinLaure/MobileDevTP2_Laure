@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] private AudioSource restartSound;
+    [SerializeField] private AudioSource winSound;
+
     private List<IRestartable> entities = new List<IRestartable>();
     private EventBus eventBus;
     private GameManager gameManager;
@@ -60,6 +63,7 @@ public class LevelManager : MonoBehaviour
     private void HandleEndRequest(OnGameEndRequest data)
     {
         eventBus.Raise<OnGameEnded>(data.hasWon, timer, coinAmount);
+        winSound.Play();
         gameManager.AddMoney(coinAmount);
     }
 
@@ -90,6 +94,7 @@ public class LevelManager : MonoBehaviour
         timer = currentLevelData.maxTime;
         coinAmount = 0;
         eventBus.Raise<OnUpdateCoins>(coinAmount);
+        restartSound.Play();
     }
 
     private void OnDestroy()

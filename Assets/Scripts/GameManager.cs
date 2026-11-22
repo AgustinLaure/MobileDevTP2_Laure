@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
 
     [field: SerializeField] public AudioSource GameplayMusic { get; set; }
     [field: SerializeField] public AudioSource MenuMusic { get; set; }
+    [field: SerializeField] public AudioSource ButtonSound { get; set; }
 
     public float GetFadeTime { get { return fadeTime; } }
 

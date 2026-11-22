@@ -11,6 +11,8 @@ public class Shop : MonoBehaviour
     [SerializeField] private float buyButtonDisabledAlpha;
     [SerializeField] private float currentHealthDisabledAlpha;
 
+    [SerializeField] private AudioSource buyButtonSound;
+
     [SerializeField] private Button buyButton;
     [SerializeField] private TMP_Text priceText;
     [SerializeField] private CanvasGroup buyButtonCG;
@@ -68,6 +70,7 @@ public class Shop : MonoBehaviour
         price *= priceMultiplier;
         priceText.text = price.ToString();
         eventBus.Raise<OnMainMenuUpdateMoney>();
+        buyButtonSound.Play();
 
         if (gameManager.GetPlayerHealthPoints.maxHp >= maxPurchases)
         {
