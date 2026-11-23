@@ -51,8 +51,11 @@ public class Tutorial : MonoBehaviour
         ServiceLocator serviceLocator = ServiceLocator.Instance;
 
         gameManager = serviceLocator.GetService<GameManager>();
+        tapAction.action.actionMap?.Enable();
+        tapAction.action.Enable();
         tapAction.action.performed += OnTap;
     }
+
 
     private void Start()
     {
@@ -217,5 +220,6 @@ public class Tutorial : MonoBehaviour
     private void OnDestroy()
     {
         tapAction.action.performed -= OnTap;
+        tapAction.action.Disable();
     }
 }
