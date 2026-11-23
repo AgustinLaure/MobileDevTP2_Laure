@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 90f0c3101dbdd1a498f14c9222a91352
+guid: ac93e1de49a05534e97158f74977d7c8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5981145910139656228
-    second: Gemini_Generated_Image_bqpyopbqpyopbqpy_0
+      213: -1935691115665551758
+    second: death-skull_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -85,27 +85,27 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 12
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Android
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 50
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gemini_Generated_Image_bqpyopbqpyopbqpy_0
+      name: death-skull_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2752
-        height: 1536
+        x: 15
+        y: 15
+        width: 482
+        height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 42897ab048c410350800000000000000
-      internalID: 5981145910139656228
+      spriteID: 27e00ef9f2b0325e0800000000000000
+      internalID: -1935691115665551758
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Gemini_Generated_Image_bqpyopbqpyopbqpy_0: 5981145910139656228
+      death-skull_0: -1935691115665551758
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
