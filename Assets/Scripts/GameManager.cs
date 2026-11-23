@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
     {
         if (scene.name == gameplaySceneName)
         {
-            levelFactory.CreateLevel(currentLevelIndex);
+            StartCoroutine(levelFactory.CreateLevel(currentLevelIndex));
         }
     }
 
@@ -194,6 +194,9 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoadSceneCoroutine()
     {
         yield return FadeOut();
+
+        levelFactory.UnloadCurrentLevel();
+
         yield return SceneManager.LoadSceneAsync(loadingSceneName);
     }
 

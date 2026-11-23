@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28c09e3476eaeb42814acbca2d21a8f, type: 3}
   m_Name: Level3Data
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  <LevelPrefab>k__BackingField: {fileID: 7349904423659162123, guid: 6f6329991d70c604288e06ef5b584e5d, type: 3}
+  <LevelPrefab>k__BackingField:
+    m_AssetGUID: 6975ee0014858384295061f37240fa9b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   <LevelMaxTime>k__BackingField: 40
   <DeathAreaDamage>k__BackingField: 1
   <DeathAreaBlinkCooldown>k__BackingField: 1

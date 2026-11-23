@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 [CreateAssetMenu(fileName = "LevelData", menuName = "Scriptable Objects/LevelData")]
 public class LevelData : ScriptableObject
 {
     [field: Header("Level")]
 
-    [field: SerializeField] public GameObject LevelPrefab { get; private set; }
+    [field: SerializeField] public AssetReferenceGameObject LevelPrefab { get; private set; }
     [field: SerializeField] public float LevelMaxTime { get; private set; }
 
     [field: Header("DeathAreas")]

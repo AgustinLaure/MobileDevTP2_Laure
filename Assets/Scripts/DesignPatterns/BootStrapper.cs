@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public static class BootStrapper
 {
@@ -11,8 +12,10 @@ public static class BootStrapper
         serviceLocator.AddService(new EventBus());
         serviceLocator.AddService(new InputSystemController());
 
-        GameObject gameManagerPrefab = Resources.Load<GameObject>("GameManager");
-        serviceLocator.AddServiceFromPrefab<GameManager>(gameManagerPrefab, true);
+        GameObject gmObj = Addressables.InstantiateAsync("GameManager").WaitForCompletion();
+        Object.DontDestroyOnLoad(gmObj);
+
+        serviceLocator.AddService<GameManager>(gmObj.GetComponent<GameManager>());
 
         GameObject loggerTestPrefab = Resources.Load<GameObject>("LoggerTest");
         serviceLocator.AddServiceFromPrefab<LoggerTest>(loggerTestPrefab, true);

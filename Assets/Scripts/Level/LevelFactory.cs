@@ -1,36 +1,66 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class LevelFactory
 {
     private readonly LevelData[] levelsData;
+
+    private AsyncOperationHandle<GameObject> currentLevelHandle;
+    private GameObject currentLevelInstance;
 
     public LevelFactory(LevelData[] levelsData)
     {
         this.levelsData = levelsData;
     }
 
-    public GameObject CreateLevel(int index)
+    public IEnumerator CreateLevel(int index)
     {
-        GameObject levelObject = Object.Instantiate(levelsData[index].LevelPrefab);
+        UnloadCurrentLevel();
 
-        Coin[] coins = levelObject.GetComponentsInChildren<Coin>(true);
+        currentLevelHandle = levelsData[index].LevelPrefab.LoadAssetAsync<GameObject>();
+        yield return currentLevelHandle;
+
+        GameObject tempHolder = new GameObject("Temp");
+        tempHolder.SetActive(false);
+
+        currentLevelInstance = Object.Instantiate(currentLevelHandle.Result, tempHolder.transform);
+
+        Coin[] coins = currentLevelInstance.GetComponentsInChildren<Coin>(true);
 
         foreach (Coin coin in coins)
         {
             coin.Init(levelsData[index]);
         }
 
-        DeathArea[] deathAreas = levelObject.GetComponentsInChildren<DeathArea>(true);
+        DeathArea[] deathAreas = currentLevelInstance.GetComponentsInChildren<DeathArea>(true);
 
         foreach (DeathArea deathArea in deathAreas)
         {
             deathArea.Init(levelsData[index]);
         }
 
-        IRestartable[] entities = levelObject.GetComponentsInChildren<IRestartable>();
+        IRestartable[] entities = currentLevelInstance.GetComponentsInChildren<IRestartable>(true);
 
-        levelObject.GetComponentInChildren<LevelManager>().Init(levelsData[index], entities);
+        currentLevelInstance.GetComponentInChildren<LevelManager>(true).Init(levelsData[index], entities);
 
-        return levelObject;
+        currentLevelInstance.transform.SetParent(null);
+        Object.Destroy(tempHolder);
+    }
+
+    public void UnloadCurrentLevel()
+    {
+        if (currentLevelInstance != null)
+        {
+            Object.Destroy(currentLevelInstance);
+            currentLevelInstance = null;
+        }
+
+        if (currentLevelHandle.IsValid())
+        {
+            Addressables.Release(currentLevelHandle);
+            currentLevelHandle = default;
+        }
     }
 }
