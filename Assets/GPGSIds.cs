@@ -24,7 +24,11 @@
 
 public static class GPGSIds
 {
-        public const string achievement_test = "CgkIjd_8o4wQEAIQAQ"; // <GPGSID>
+        public const string achievement_there_is_always_a_first_time = "CgkIjd_8o4wQEAIQAQ"; // <GPGSID>
+        public const string leaderboard_most_coins_collected = "CgkIjd_8o4wQEAIQBQ"; // <GPGSID>
+        public const string achievement_getting_the_hang_of_it = "CgkIjd_8o4wQEAIQAg"; // <GPGSID>
+        public const string achievement_an_absolute_beast = "CgkIjd_8o4wQEAIQAw"; // <GPGSID>
+        public const string achievement_king_of_hearts = "CgkIjd_8o4wQEAIQBA"; // <GPGSID>
 
 }
 

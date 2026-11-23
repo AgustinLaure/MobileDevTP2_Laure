@@ -62,7 +62,8 @@ public class LevelManager : MonoBehaviour
         winSound.Play();
 
         gameManager.AddMoney(coinAmount);
-        playGamesServicesHandler.IncrementAchievement(moneyLeaderboard, gameManager.GetCurrentMoney);
+        //playGamesServicesHandler.IncrementAchievement(moneyLeaderboard, gameManager.GetCurrentMoney);
+        playGamesServicesHandler.IncrementScore(GPGSIds.leaderboard_most_coins_collected, gameManager.GetCurrentMoney);
         playGamesServicesHandler.UnlockAchievement(levelAchievements[gameManager.GetCurrentLevelIndex]);
     }
 
