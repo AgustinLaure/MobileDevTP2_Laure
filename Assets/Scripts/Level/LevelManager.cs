@@ -61,9 +61,9 @@ public class LevelManager : MonoBehaviour
         eventBus.Raise<OnGameEnded>(data.hasWon, timer, coinAmount);
         winSound.Play();
 
-        playGamesServicesHandler.IncrementAchievement(moneyLeaderboard, coinAmount);
-        playGamesServicesHandler.UnlockAchievement(levelAchievements[gameManager.GetCurrentLevelIndex]);
         gameManager.AddMoney(coinAmount);
+        playGamesServicesHandler.IncrementAchievement(moneyLeaderboard, gameManager.GetCurrentMoney);
+        playGamesServicesHandler.UnlockAchievement(levelAchievements[gameManager.GetCurrentLevelIndex]);
     }
 
     private void Update()
