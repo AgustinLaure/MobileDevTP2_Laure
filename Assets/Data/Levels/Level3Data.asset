@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level3Data
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   <LevelPrefab>k__BackingField:
-    m_AssetGUID: 6975ee0014858384295061f37240fa9b
+    m_AssetGUID: 6f6329991d70c604288e06ef5b584e5d
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 

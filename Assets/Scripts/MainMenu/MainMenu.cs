@@ -1,6 +1,8 @@
-using GooglePlayGames.BasicApi;
-using JetBrains.Annotations;
 using System;
+#if UNITY_ANDROID
+using GooglePlayGames.BasicApi;
+#endif
+using JetBrains.Annotations;
 using System.ComponentModel;
 using TMPro;
 using UnityEngine;
