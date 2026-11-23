@@ -3596,7 +3596,7 @@ MonoBehaviour:
   - {fileID: 2084174761}
   - {fileID: 2072551521}
   - {fileID: 480485544}
-  lostHealthAlpha: 0.5
+  lostHealthAlpha: 0.3
 --- !u!1 &1904317388
 GameObject:
   m_ObjectHideFlags: 0

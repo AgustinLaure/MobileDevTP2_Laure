@@ -4,19 +4,14 @@ using UnityEngine;
 public class DeathArea : MonoBehaviour, IRestartable
 {
     [SerializeField] private AnimationCurve fadeCurve;
-    [SerializeField] private AreaTrigger areaTrigger;
-    [SerializeField] private int damage;
-    [SerializeField] private float blinkCooldown;
-    [SerializeField] private float blinkTime;
-
     [SerializeField] private Color blinkingColor;
     [SerializeField] private Color activeColor;
 
+    [SerializeField] private AreaTrigger areaTrigger;
     [SerializeField] private BoxCollider2D boxCollider;
-
-    [SerializeField] private float fadeInTime;
-
     [SerializeField] private SpriteRenderer spriteRenderer;
+
+    private LevelData levelData;
 
     private bool isActive = false;
     private bool hasHitPlayerThisBlink = false;
@@ -35,9 +30,14 @@ public class DeathArea : MonoBehaviour, IRestartable
         eventBus = serviceLocator.GetService<EventBus>();
 
         areaTrigger.OnTriggerEntered += HandleCollision;
+    }
 
-        blinkTimer = new WaitForSeconds(blinkTime);
-        blinkCooldownTimer = new WaitForSeconds(blinkCooldown);
+    public void Init(LevelData data)
+    {
+        levelData = data;
+
+        blinkTimer = new WaitForSeconds(levelData.DeathAreaBlinkTime);
+        blinkCooldownTimer = new WaitForSeconds(levelData.DeathAreaBlinkCooldown);
     }
 
     private void Update()
@@ -57,10 +57,10 @@ public class DeathArea : MonoBehaviour, IRestartable
         boxCollider.enabled = false;
         isActive = false;
 
-        while (t < fadeInTime)
+        while (t < levelData.DeathAreaFadeInTime)
         {
             t += Time.deltaTime;
-            startColor.a = fadeCurve.Evaluate(t / fadeInTime);
+            startColor.a = fadeCurve.Evaluate(t / levelData.DeathAreaFadeInTime);
             spriteRenderer.color = startColor;
 
             yield return null;
@@ -88,7 +88,7 @@ public class DeathArea : MonoBehaviour, IRestartable
     {
         if (collider.CompareTag(Player.GetPlayerTag) && isActive && !hasHitPlayerThisBlink)
         {
-            eventBus.Raise<OnHitPlayer>(damage);
+            eventBus.Raise<OnHitPlayer>(levelData.DeathAreaDamage);
             hasHitPlayerThisBlink = true;
         }
     }

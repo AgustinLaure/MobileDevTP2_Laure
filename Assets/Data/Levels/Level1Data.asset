@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28c09e3476eaeb42814acbca2d21a8f, type: 3}
   m_Name: Level1Data
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  maxTime: 20
+  <LevelMaxTime>k__BackingField: 20
+  <DeathAreaDamage>k__BackingField: 1
+  <DeathAreaBlinkCooldown>k__BackingField: 1
+  <DeathAreaBlinkTime>k__BackingField: 1
+  <DeathAreaFadeInTime>k__BackingField: 3
+  <CoinValue>k__BackingField: 1
+  <CoinPickAudio>k__BackingField: {fileID: 8300000, guid: d86d8f2f9a0be3b4aaedd891893ebf22, type: 3}

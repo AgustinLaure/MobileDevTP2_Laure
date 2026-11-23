@@ -50,13 +50,32 @@ public class LevelManager : MonoBehaviour
 
         currentLevelData = FindAnyObjectByType<Level>().GetLevelData;
 
-        timer = currentLevelData.maxTime;
+        timer = currentLevelData.LevelMaxTime;
+
+        ConfigEntities();
 
         gameManager.SetPause(false);
 
         if (!gameManager.GameplayMusic.isPlaying)
         {
             gameManager.GameplayMusic.Play();
+        }
+    }
+
+    private void ConfigEntities()
+    {
+        Coin[] coins = FindObjectsByType<Coin>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        foreach (Coin coin in coins)
+        {
+            coin.Init(currentLevelData);
+        }
+
+        DeathArea[] deathAreas = FindObjectsByType<DeathArea>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        foreach (DeathArea deathArea in deathAreas)
+        {
+            deathArea.Init(currentLevelData);
         }
     }
 
@@ -93,7 +112,7 @@ public class LevelManager : MonoBehaviour
         }
 
         Debug.Log("LevelRetry");
-        timer = currentLevelData.maxTime;
+        timer = currentLevelData.LevelMaxTime;
         coinAmount = 0;
         eventBus.Raise<OnUpdateCoins>(coinAmount);
         restartSound.Play();

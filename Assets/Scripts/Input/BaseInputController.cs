@@ -1,5 +1,3 @@
-using UnityEngine;
-using UnityEngine.InputSystem;
 
 public abstract class BaseInputController
 {

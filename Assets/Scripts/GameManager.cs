@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float fadeTime;
 
-    [SerializeField] public AudioMixer audioMixer;
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private AudioSource sfxSource;
 
     private HealthPoints playerHealth;
 
@@ -77,9 +78,9 @@ public class GameManager : MonoBehaviour
         playerHealth.hp = playerHealth.maxHp;
     }
 
-    public void SetVolume(float volume, string mixer)
+    public void PlaySfx(AudioClip clip, float volume = 1f)
     {
-
+        sfxSource.PlayOneShot(clip, volume);
     }
 
     public void AddGameLog(GameObject log)
@@ -232,7 +233,6 @@ public class GameManager : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         TargetScene = sceneName;
-
         StartCoroutine(LoadSceneCoroutine());
     }
 }
