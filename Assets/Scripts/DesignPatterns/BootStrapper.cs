@@ -19,6 +19,8 @@ public static class BootStrapper
 
         GameObject loggerTestPrefab = Resources.Load<GameObject>("LoggerTest");
         serviceLocator.AddServiceFromPrefab<LoggerTest>(loggerTestPrefab, true);
+
+        serviceLocator.AddService(new PlayGameServicesHandler());
     }
 
     public static T CreateMonoSingletonGameObject<T>() where T : MonoBehaviour

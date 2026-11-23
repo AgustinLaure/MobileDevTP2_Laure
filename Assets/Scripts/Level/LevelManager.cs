@@ -15,6 +15,16 @@ public class LevelManager : MonoBehaviour
     private float timer = 0f;
 
     private LevelData currentLevelData = null;
+    private PlayGameServicesHandler playGamesServicesHandler;
+
+    private string[] levelAchievements =
+    {
+        "CgkIjd_8o4wQEAIQAQ",
+        "CgkIjd_8o4wQEAIQAg",
+        "CgkIjd_8o4wQEAIQAw"
+    };
+
+    private string moneyLeaderboard = "CgkIjd_8o4wQEAIQBQ";
 
     private void Awake()
     {
@@ -26,6 +36,7 @@ public class LevelManager : MonoBehaviour
         eventBus.Subscribe<OnGameEndRequest>((Action<OnGameEndRequest>)HandleEndRequest);
 
         gameManager = serviceLocator.GetService<GameManager>();
+        playGamesServicesHandler = serviceLocator.GetService<PlayGameServicesHandler>();
     }
 
     private void Start()
@@ -49,6 +60,9 @@ public class LevelManager : MonoBehaviour
     {
         eventBus.Raise<OnGameEnded>(data.hasWon, timer, coinAmount);
         winSound.Play();
+
+        playGamesServicesHandler.IncrementAchievement(moneyLeaderboard, coinAmount);
+        playGamesServicesHandler.UnlockAchievement(levelAchievements[gameManager.GetCurrentLevelIndex]);
         gameManager.AddMoney(coinAmount);
     }
 

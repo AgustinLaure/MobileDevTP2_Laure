@@ -1,3 +1,4 @@
+using GooglePlayGames.BasicApi;
 using JetBrains.Annotations;
 using System;
 using System.ComponentModel;
@@ -27,6 +28,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button shopButton;
     [SerializeField] private Button shopBackButton;
 
+    [SerializeField] private Button achievementsButton;
+    [SerializeField] private Button leaderBoardButton;
+
     [SerializeField] private CanvasGroup shopCG;
 
     [SerializeField] private CanvasGroup[] levelSelectCG;
@@ -44,6 +48,9 @@ public class MainMenu : MonoBehaviour
 
     private GameManager gameManager;
     private EventBus eventBus;
+    private PlayGameServicesHandler playGameServicesHandler;
+
+    private string moneyLeaderboard = "CgkIjd_8o4wQEAIQBQ";
 
     private void Awake()
     {
@@ -64,10 +71,14 @@ public class MainMenu : MonoBehaviour
         shopButton.onClick.AddListener(HandleShopButton);
         shopBackButton.onClick.AddListener(HandleShopBackButton);
 
+        achievementsButton.onClick.AddListener(HandleAchivementsButton);
+        leaderBoardButton.onClick.AddListener(HandleLeaderboardButton);
+
         ServiceLocator serviceLocator = ServiceLocator.Instance;
 
         gameManager = serviceLocator.GetService<GameManager>();
         eventBus = serviceLocator.GetService<EventBus>();
+        playGameServicesHandler = serviceLocator.GetService<PlayGameServicesHandler>();
 
         eventBus.Subscribe<OnMainMenuUpdateMoney>((Action)HandleUpdateMoney);
 
@@ -95,6 +106,16 @@ public class MainMenu : MonoBehaviour
         moneyText.text = gameManager.GetCurrentMoney.ToString();
 
         gameManager.MenuMusic.Play();
+    }
+
+    private void HandleAchivementsButton()
+    {
+        playGameServicesHandler.ShowAchievements();
+    }
+
+    private void HandleLeaderboardButton()
+    {
+        playGameServicesHandler.ShowLeaderboard(moneyLeaderboard);
     }
 
     private void HandleShopButton()
@@ -201,6 +222,9 @@ public class MainMenu : MonoBehaviour
 
         shopButton.onClick.RemoveListener(HandleShopButton);
         shopBackButton.onClick.RemoveListener(HandleShopBackButton);
+
+        achievementsButton.onClick.RemoveListener(HandleAchivementsButton);
+        leaderBoardButton.onClick.RemoveListener(HandleLeaderboardButton);
 
         eventBus.Unsubscribe<OnMainMenuUpdateMoney>((Action)HandleUpdateMoney);
     }

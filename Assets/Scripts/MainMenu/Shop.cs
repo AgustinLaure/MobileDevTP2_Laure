@@ -21,8 +21,11 @@ public class Shop : MonoBehaviour
 
     private GameManager gameManager;
     private EventBus eventBus;
+    private PlayGameServicesHandler achievement;
 
     private const string maxText = "Max";
+
+    private const string maxBuyAchievement = "CgkIjd_8o4wQEAIQBA";
 
     public int GetPrice { get { return price; } }
     public int GetHp { get { return hp; } }
@@ -33,6 +36,7 @@ public class Shop : MonoBehaviour
 
         gameManager = serviceLocator.GetService<GameManager>();
         eventBus = serviceLocator.GetService<EventBus>();
+        achievement = serviceLocator.GetService<PlayGameServicesHandler>();
     }
 
     private void Start()
@@ -41,6 +45,7 @@ public class Shop : MonoBehaviour
 
         if (gameManager.GetPlayerHealthPoints.maxHp >= maxPurchases)
         {
+            achievement.UnlockAchievement(maxBuyAchievement);
             DisableButton();
             priceText.text = maxText;
         }
@@ -75,6 +80,7 @@ public class Shop : MonoBehaviour
 
         if (gameManager.GetPlayerHealthPoints.maxHp >= maxPurchases)
         {
+
             DisableButton();
             priceText.text = maxText;
             Debug.Log("ShopMaxed");
