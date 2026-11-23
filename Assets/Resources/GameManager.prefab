@@ -155,6 +155,10 @@ MonoBehaviour:
   - {fileID: 7349904423659162123, guid: e54fa63d284a7254eaedcae5e7299202, type: 3}
   - {fileID: 7349904423659162123, guid: 6975ee0014858384295061f37240fa9b, type: 3}
   - {fileID: 7349904423659162123, guid: 6f6329991d70c604288e06ef5b584e5d, type: 3}
+  levelsData:
+  - {fileID: 11400000, guid: f21dc9c3754920e42a6c296d278959b6, type: 2}
+  - {fileID: 11400000, guid: b424b362de22f3d4d8a9f2624a79d3a4, type: 2}
+  - {fileID: 11400000, guid: d500bdb74c57bbe48880dffafdc83d34, type: 2}
   maxLevelReached: 0
   fadeTime: 0.5
   audioMixer: {fileID: 24100000, guid: 9a3052f7af9f4094e967ede9dd295a9c, type: 2}

@@ -4,6 +4,8 @@ using UnityEngine;
 public class LevelData : ScriptableObject
 {
     [field: Header("Level")]
+
+    [field: SerializeField] public GameObject LevelPrefab { get; private set; }
     [field: SerializeField] public float LevelMaxTime { get; private set; }
 
     [field: Header("DeathAreas")]

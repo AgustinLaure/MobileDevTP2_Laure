@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] levelPrefabs;
+    [SerializeField] private LevelData[] levelsData;
     [SerializeField] private int maxLevelReached;
 
     [SerializeField] private float fadeTime;
@@ -15,9 +16,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioSource sfxSource;
 
-    private HealthPoints playerHealth;
+    private HealthPoints playerHealth = new HealthPoints();
 
     private List<GameObject> savedLogs = new List<GameObject>();
+
+    private LevelFactory levelFactory;
 
     private int currentLevelIndex = 0;
 
@@ -76,6 +79,10 @@ public class GameManager : MonoBehaviour
             playerHealth.maxHp = 1;
         }
         playerHealth.hp = playerHealth.maxHp;
+
+        levelFactory = new LevelFactory(levelsData);
+
+        SceneManager.sceneLoaded += HandleSceneLoaded;
     }
 
     public void PlaySfx(AudioClip clip, float volume = 1f)
@@ -139,9 +146,9 @@ public class GameManager : MonoBehaviour
         {
             maxLevelReached = currentLevelIndex + 1;
 
-            if (maxLevelReached > levelPrefabs.Length)
+            if (maxLevelReached > levelsData.Length)
             {
-                maxLevelReached = levelPrefabs.Length - 1;
+                maxLevelReached = levelsData.Length - 1;
             }
 
             UpdateLevelPrefs();
@@ -157,45 +164,24 @@ public class GameManager : MonoBehaviour
 
     public void SetLevelWon(int index, bool state)
     {
-        if (index >= 0 && index < levelPrefabs.Length)
+        if (index >= 0 && index < levelsData.Length)
         {
             maxLevelReached = currentLevelIndex;
         }
         UpdateLevelPrefs();
     }
 
-    public bool GetCurrentLevelPrefab(out GameObject levelPrefab)
-    {
-        if (currentLevelIndex >= 0 && currentLevelIndex < levelPrefabs.Length)
-        {
-            levelPrefab = levelPrefabs[currentLevelIndex];
-            return true;
-        }
-        else
-        {
-            levelPrefab = null;
-            return false;
-        }
-    }
-
-    public bool GetLevelPrefab(int index, out GameObject levelPrefab)
-    {
-        if (GetCurrentLevelPrefab(out GameObject prefab))
-        {
-            levelPrefab = prefab;
-            return true;
-        }
-        else
-        {
-            levelPrefab = null;
-        }
-
-        return false;
-    }
-
     public bool IsCurrentLastLevel()
     {
-        return currentLevelIndex + 1 >= levelPrefabs.Length;
+        return currentLevelIndex + 1 >= levelsData.Length;
+    }
+
+    private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == gameplaySceneName)
+        {
+            levelFactory.CreateLevel(currentLevelIndex);
+        }
     }
 
     public void LoadLevel(int index)
@@ -234,5 +220,10 @@ public class GameManager : MonoBehaviour
     {
         TargetScene = sceneName;
         StartCoroutine(LoadSceneCoroutine());
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= HandleSceneLoaded;
     }
 }

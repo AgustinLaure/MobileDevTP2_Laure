@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private AudioSource restartSound;
     [SerializeField] private AudioSource winSound;
 
-    private List<IRestartable> entities = new List<IRestartable>();
+    private IRestartable[] entities;
     private EventBus eventBus;
     private GameManager gameManager;
 
@@ -15,7 +15,6 @@ public class LevelManager : MonoBehaviour
     private float timer = 0f;
 
     private LevelData currentLevelData = null;
-    public int GetCoinAmount { get { return coinAmount; } }
 
     private void Awake()
     {
@@ -31,29 +30,6 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        GameObject levelPrefab = null;
-
-        if (gameManager.GetCurrentLevelPrefab(out levelPrefab))
-        {
-            Instantiate(levelPrefab, null, true);
-        }
-
-        MonoBehaviour[] monoBehaviours = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-
-        foreach (MonoBehaviour monoBehaviour in monoBehaviours)
-        {
-            if (monoBehaviour is IRestartable restartable)
-            {
-                entities.Add(restartable);
-            }
-        }
-
-        currentLevelData = FindAnyObjectByType<Level>().GetLevelData;
-
-        timer = currentLevelData.LevelMaxTime;
-
-        ConfigEntities();
-
         gameManager.SetPause(false);
 
         if (!gameManager.GameplayMusic.isPlaying)
@@ -62,21 +38,11 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void ConfigEntities()
+    public void Init(LevelData levelData, IRestartable[] entities)
     {
-        Coin[] coins = FindObjectsByType<Coin>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-
-        foreach (Coin coin in coins)
-        {
-            coin.Init(currentLevelData);
-        }
-
-        DeathArea[] deathAreas = FindObjectsByType<DeathArea>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-
-        foreach (DeathArea deathArea in deathAreas)
-        {
-            deathArea.Init(currentLevelData);
-        }
+        currentLevelData = levelData;
+        timer = currentLevelData.LevelMaxTime;
+        this.entities = entities;
     }
 
     private void HandleEndRequest(OnGameEndRequest data)
@@ -102,7 +68,6 @@ public class LevelManager : MonoBehaviour
         coinAmount += data.value;
         eventBus.Raise<OnUpdateCoins>(coinAmount);
     }
-
 
     private void HandleRetry()
     {
